@@ -8,7 +8,7 @@ owner: PCF Metrics
 Secure Socket Layer (SSL) is a standard protocol for establishing an encrypted
 link between a server and a client. To communicate over SSL, a client needs to trust the SSL certificate of the server.
 
-This topic explains how to use SSL with a self-signed certificate in JMX Bridge (formerly Ops Metrics). This SSL layer secures traffic between JMX Bridge and the user, and is separate from the SSL layer [configured between Elastic Runtime](../opsguide/security_config.html) and the rest of the Ops Manager environment. 
+This topic explains how to use SSL with a self-signed certificate in JMX Bridge (formerly Ops Metrics). This SSL layer secures traffic between JMX Bridge and the user, and is separate from the SSL layer [configured between Elastic Runtime](https://docs.pivotal.io/pivotalcf/1-7/opsguide/security_config.html) and the rest of the Ops Manager environment. 
 
 There are two kinds of SSL certificates: signed and self-signed.
 
@@ -21,7 +21,8 @@ Client computers automatically trust signed certificates. Signed certificates ar
 Clients do not automatically trust self-signed certificates.
 To communicate over SSL with a server providing a self-signed certificate, a
 client must be explicitly configured to trust the certificate.
-  <%= partial '../customizing/known-issue-self-signed-certs' %>
+
+  <p class="note"><strong>Note</strong>: Certificates generated in Elastic Runtime are signed by the Operations Manager Certificate Authority. They are not technically self-signed, but they are referred to as 'Self-Signed Certificates' in the Ops Manager GUI and throughout this documentation.</p>
 
 The following procedure configures a JMX user client to trust a self-signed certificate by importing the certificate to its truststore, an internal keystore. To use a trusted certificate signed by a CA, you only need to paste the Certificate and Key into the fields in the Ops Manager JMX Bridge tile, as shown in [Step 1, Option 2](#existing), below. 
 
