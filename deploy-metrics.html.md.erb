@@ -99,7 +99,7 @@ To receive metrics data from the PCF Elastic Runtime firehose, including Diego m
     <%= image_tag("images/ops-metrics-jmx-ips.png") %>
 
 1. Record the IP address of the **JMX Provider**.
-<p class="note"><strong>Note</strong>: After installation, your JMX client connects to this IP address at port 44444 using the credentials that you  supplied.</p>
+<p class="note"><strong>Note</strong>: After installation, your JMX client connects to this IP address at port 44444 using the credentials that you  supplied. Also ensure that TCP port 44445 is open. For general information about opening ports using security groups, see <a href="https://docs.pivotal.io/pivotalcf/1-7/adminguide/app-sec-groups.html">Application Security Groups</a>.</p>
 
 ## <a id='config-ip'></a>Step 8: Configure the Metrics IP Address ##
 
