@@ -25,6 +25,13 @@ If you see the following error during an upgrade from Ops Metrics 1.4 to 1.6 (no
 1. [Uninstall Ops Metrics 1.4](./troubleshooting-uninstall-metrics.html#uninstall)
 1. [Install Ops Metrics 1.6](http://docs.pivotal.io/pivotalcf/1-6/customizing/deploy-metrics.html#import)
 
+## <a id='upgrade'></a>Resolve Upgrade Error for 1.6 to 1.7 ##
+If you see the following error during an upgrade from Ops Metrics 1.6 to JMX Bridge 1.7.x:
+
+   <strong> "This product requires a stemcell that is older than the currently installed product. Download the newest version of this product from Pivotal Network and try again."</strong>
+   
+1. [Upgrade Ops Manager](https://docs.pivotal.io/pivotalcf/1-7/customizing/upgrading-pcf.html) to 1.7.8 or higher. This is a known issue that was corrected in newer Ops Manager versions.
+
 ## <a id='uninstall'></a>Uninstall JMX Bridge (formerly Ops Metrics) ##
 
 1. Scale the collector resource from Elastic Runtime to `0`.
