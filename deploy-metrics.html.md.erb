@@ -9,7 +9,7 @@ The JMX Bridge tool is a JMX extension for Elastic Runtime. Follow the instructi
 
 ## <a id='import'></a>Step 1: Install the JMX Bridge Tile ##
 
-<p class="note"><strong>Note</strong>: Pivotal strongly suggests that you install <a href="https://network.pivotal.io/products/elastic-runtime">Pivotal Cloud Foundry Elastic Runtime</a> before installing JMX Bridge. If you do not install Elastic Runtime first, the system displays numerous errors if you configure JMX Bridge to pull data from the nonexistent Elastic Runtime installation.</p>
+<p class="note"><strong>Note</strong>: Use of the Firehose nozzle requires that you install <a href="https://network.pivotal.io/products/elastic-runtime">Pivotal Cloud Foundry Elastic Runtime</a> BEFORE installing JMX Bridge. If you install in reverse order, JMX will display numerous errors, and you may experience a bad connection between the Firehose nozzle and the JMX Provider.</p>
 
 1. [Download JMX Bridge](https://network.pivotal.io/products/ops-metrics).
 
@@ -78,7 +78,7 @@ credentials.
 
 ## <a id='resource-config'></a>Step 5: Resource Configuration ##
 
-<p class="note"><strong>Note</strong>: Do not change the <strong>OpenTSDB Firehose Nozzle</strong> instance count unless you have a running Elastic Runtime installation. If necessary, you can skip this step and perform it later.</p>
+<p class="note"><strong>Note</strong>: Do not change the <strong>OpenTSDB Firehose Nozzle</strong> instance count unless you have a running Elastic Runtime installation.</p>
 
 To receive metrics data from the PCF Elastic Runtime firehose, including Diego metrics, change the **OpenTSDB Firehose Nozzle** instance count from `0` to `1`.
 
@@ -126,5 +126,3 @@ Click **Return to Product Dashboard**.
 
 Once installed and configured, metrics for Cloud Foundry components
 automatically report to the JMX endpoint.
-
-<p class="note"><strong>Note</strong>: If you installed JMX Bridge before installing Elastic Runtime tile, you can revisit and enable the <strong>OpenTSDB Firehose Nozzle</strong> in <a href="#resource-config">Step 5: Resource Configuration</a> after you install Elastic Runtime.</p>
