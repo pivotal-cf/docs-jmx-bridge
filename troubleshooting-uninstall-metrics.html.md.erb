@@ -44,10 +44,12 @@ If you see the following error during an upgrade from Ops Metrics 1.6 to JMX Bri
 
 1. Proceed with uninstallation. See the [Deleting a Product](https://docs.pivotal.io/pivotalcf/1-7/customizing/add-delete.html#del-prod) section of the [Adding and Deleting Products](https://docs.pivotal.io/pivotalcf/1-7/customizing/add-delete.html) topic for details.
 
-## <a id='no-metrics'></a>Missing metrics from Cloud Foundry installation or Firehose ##
-If you are not seeing expected metrics from Elastic Runtime in the JMX Provider:
-1. Verify the order of installation (Elastic Runtime MUST be installed prior to JMX Bridge)
-1. If JMX Bridge was installed first:
-  1. ssh into the opentsdb-firehose-nozzle vm
-  1. grant sudo access to the machine (i.e. `sudo -i`)
-  1. Restart the opentsdb-firehose-nozzle job (`monit restart opentsdb-firehose-nozzle`)
+## <a id='no-metrics'></a>Missing Metrics from PCF Installation or Firehose ##
+If you are not seeing expected metrics from Elastic Runtime in the JMX provider:
+1. Verify the order of installation. Elastic Runtime must be installed prior to JMX Bridge.
+1. If JMX Bridge was installed first, perform the following steps:
+    1. SSH into the `opentsdb-firehose-nozzle` VM. For information about how to use the BOSH CLI to SSH into a VM, see [Advanced Troubleshooting with the BOSH CLI](https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html).
+    1. Grant `sudo` access to the machine:
+       <pre class="terminal">$ sudo -i`</pre>
+    1. Restart the `opentsdb-firehose-nozzle` job. 
+       <pre class="terminal">$ monit restart opentsdb-firehose-nozzle</pre>
