@@ -44,4 +44,10 @@ If you see the following error during an upgrade from Ops Metrics 1.6 to JMX Bri
 
 1. Proceed with uninstallation. See the [Deleting a Product](https://docs.pivotal.io/pivotalcf/1-7/customizing/add-delete.html#del-prod) section of the [Adding and Deleting Products](https://docs.pivotal.io/pivotalcf/1-7/customizing/add-delete.html) topic for details.
 
-
+## <a id='no-metrics'></a>Missing metrics from Cloud Foundry installation or Firehose ##
+If you are not seeing expected metrics from Elastic Runtime in the JMX Provider:
+1. Verify the order of installation (Elastic Runtime MUST be installed prior to JMX Bridge)
+1. If JMX Bridge was installed first:
+  1. ssh into the opentsdb-firehose-nozzle vm
+  1. grant sudo access to the machine (i.e. `sudo -i`)
+  1. Restart the opentsdb-firehose-nozzle job (`monit restart opentsdb-firehose-nozzle`)
