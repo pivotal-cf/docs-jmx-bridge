@@ -74,13 +74,29 @@ credentials.
 
 1. Once you have provided an SSL certificate and private key, click **Save**.
 
-## <a id='resource-config'></a>Step 5: Resource Configuration ##
+## <a id='config-ssl'></a>(Optional) Step 5: Disable/Enable Security Logging ##
+
+1. Select the **Enable Security Logging** checkbox.
+Access to the JMX endpoint is logged to STDOUT by default. 
+This security logging can be enabled/disabled in the JMX Bridge tile 
+configuration by checking/unchecking this checkbox.
+This is enabled by default.
+
+    <%= image_tag("images/jmxbridge-enable-security-logging.png") %>
+    
+1. If you have enabled or disabled security logging, click **Save**.
+
+<p class="note"><strong>Note</strong>:Related log output is made available by initiating a JMX Provider logs 
+download from the JMX Bridge tile configuration status tab, then 
+fetching the download from the logs tab.</p>
+
+## <a id='resource-config'></a>Step 6: Resource Configuration ##
 
 <p class="note"><strong>Note</strong>: Do not change the <strong>OpenTSDB Firehose Nozzle</strong> instance count unless you have a running Elastic Runtime installation.</p>
 
 To receive metrics data from the PCF Elastic Runtime firehose, including Diego metrics, change the **OpenTSDB Firehose Nozzle** instance count from `0` to `1`.
 
-## <a id='apply'></a>Step 6: Apply Changes ##
+## <a id='apply'></a>Step 7: Apply Changes ##
 
 1. Navigate to the PCF Ops Manager Installation Dashboard.
 
@@ -90,7 +106,7 @@ To receive metrics data from the PCF Elastic Runtime firehose, including Diego m
 
 1. When complete, a “Changes Applied” message appears.
 
-## <a id='get-ip'></a>Step 7: Find the IP of the JMX Provider ##
+## <a id='get-ip'></a>Step 8: Find the IP of the JMX Provider ##
 
 1. Click **Return to Product Dashboard**.
 
@@ -99,9 +115,9 @@ To receive metrics data from the PCF Elastic Runtime firehose, including Diego m
     <%= image_tag("images/ops-metrics-jmx-ips.png") %>
 
 1. Record the IP address of the **JMX Provider**.
-<p class="note"><strong>Note</strong>: After installation, your JMX client connects to this IP address at port 44444 using the credentials that you  supplied. Also ensure that TCP port 44445 is open.
+<p class="note"><strong>Note</strong>: After installation, your JMX client connects to this IP address at port 44444 using the credentials that you  supplied. Also ensure that TCP port 44445 is open.</p>
 
-## <a id='config-ip'></a>Step 8: Configure the Metrics IP Address ##
+## <a id='config-ip'></a>Step 9: Configure the Metrics IP Address ##
 
 1. Return to the **Installation Dashboard**.
 Click the **Ops Manager Director** tile and select **Director Config**.
@@ -112,7 +128,7 @@ Click the **Ops Manager Director** tile and select **Director Config**.
 Provider.
 Click **Save**.
 
-## <a id='complete'></a>Step 9: Complete Installation ##
+## <a id='complete'></a>Step 10: Complete Installation ##
 
 1. In the Pending Changes view, click **Apply Changes**.
 
