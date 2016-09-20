@@ -5,18 +5,33 @@ owner: Metrix
 
 <p class="note"><strong>Note</strong>: Before version 1.7.X, JMX Bridge was known as Ops Metrics. For Ops Metrics release notes and known issues, see <a href="#1-6">Version 1.6.16</a>. </p>
 
-##<a id='v1.8.2'></a>Version 1.8.2
-**Release Date: September 16, 2016**
+##<a id='v1.8.3'></a>Version 1.8.3
+**Release Date: September 20, 2016**
 
 ### Major Features
 * Access to the JMX endpoint is now logged to STDOUT by default. This security logging can be enabled/disabled in the JMX Bridge tile configuration by checking/unchecking "Enable Security Logging" under JMX Provider.
   *  Related log output is made available by initiating a JMX Provider logs download from the JMX Bridge tile configuration status tab, then fetching the download from the logs tab. 
 
 ### Release Notes
+* JMX Bridge 1.8.3 - BUG FIX: Corrects issue in 1.8.2 where the new security logging feature was not available to the operator in the tile config.
+* Stemcell for 1.8.3 remains 3262
+
+### Known issues
+* There is nothing that prevents the user from turning on the Nozzle deployment when Elastic Runtime is not present.
+  * Enabling the nozzle when Elastic Runtime is not deployed or enabled will produce the following error:
+  * "RuntimeError - unknown product 'cf' in (( ..cf.cloud\_controller.system_domain.value ))"
+  * To fix this, reduce the number of nozzle counts to zero until Elastic Runtime is enabled.
+* Because deploying the OpenTSDB firehose nozzle is optional and disabled by default, smoke tests for Elastic Runtime have been disabled until a later release.
+
+##<a id='v1.8.2'></a>Version 1.8.2
+**Release Date: September 16, 2016**
+
+### Release Notes
 * JMX Bridge 1.8.2 is targeted for PCF 1.8.X
 * Stemcell for 1.8.2 is 3262
 
 ### Known issues
+* BUG IDENTIFIED: The new security logging feature expected in JMX Bridge 1.8.X was not available to the operator in the tile config in version 1.8.2. JMX Bridge 1.8.3 corrects this.
 * There is nothing that prevents the user from turning on the Nozzle deployment when Elastic Runtime is not present.
   * Enabling the nozzle when Elastic Runtime is not deployed or enabled will produce the following error:
   * "RuntimeError - unknown product 'cf' in (( ..cf.cloud\_controller.system_domain.value ))"
