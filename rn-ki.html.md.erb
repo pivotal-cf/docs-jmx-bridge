@@ -5,90 +5,24 @@ owner: Metrix
 
 <p class="note"><strong>Note</strong>: Before version 1.7.X, JMX Bridge was known as Ops Metrics. For Ops Metrics release notes and known issues, see <a href="#1-6">Version 1.6.16</a>. </p>
 
-##<a id='1-8'></a>Version 1.8.X
+##<a id='v1.8.2'></a>Version 1.8.2
+**Release Date: September 16, 2016**
 
 ### Major Features
 * Access to the JMX endpoint is now logged to STDOUT by default. This security logging can be enabled/disabled in the JMX Bridge tile configuration by checking/unchecking "Enable Security Logging" under JMX Provider.
   *  Related log output is made available by initiating a JMX Provider logs download from the JMX Bridge tile configuration status tab, then fetching the download from the logs tab. 
 
 ### Release Notes
-
 * JMX Bridge 1.8.2 is targeted for PCF 1.8.X
 * Stemcell for 1.8.2 is 3262
 
 ### Known issues
-* No new known issues for JMX Bridge 1.8.X 
-
-##<a id='1-7'></a>Version 1.7.X
-
-### Release Notes
-
-**Version 1.7.3**
-
-* Updates the NOAA client and other service related dependencies.
-    * An increase in disconnects between the OpenTSDB Firehose Nozzle and the Firehose, resulting in a need to restart the nozzle, was diagnosed as the NOAA client becoming too far out-of-date. Version 1.7.3 updates the NOAA client and other service related dependencies.
-* Stemcell remains the same at 3232
-
-**Version 1.7.2**
-
-* Fixes issue where you could not upgrade from Ops Metrics 1.6.10+ if you had already upgraded to OpsMan 1.7
-* Stemcell remains the same at 3232
-
-**Version 1.7.1**
-
-* Removes the bosh job ID from metric name
-* Updated stemcell for 1.7.1 to 3232
-
-**Version 1.7.0**
-
-* Product name has been changed from "Ops Metrics" to "JMX Bridge"
-* Stemcell for 1.7.0 is 3149
-
-### Known issues
-
-No new known issues for JMX Bridge 1.7.X. For old known issues, see [below](#1-6).
-
-##<a id='1-6'></a>Version 1.6.17 
-
-### Major Features
-* The addition of CF loggregator data via the firehose is still available, but disabled by default.
-  *  This allows the user to install Ops Metrics without Elastic Runtime to monitor Bosh data.
-  *  The nozzle should not be enabled until after the user successfully deploys Elastic Runtime (see known issues)
-* Ops Metrics still supports the firehose in addition to Bosh and the Collector for data.
-* Ops Metrics now asks Elastic Runtime for the port that firehose data comes from.
-
-### Bug Fixes
-
-* Firehose data ingest disabled by default to avoid deadlock condition if Ops Metrics installed before Elastic Runtime.
-* Firehose no longer defaults to using 4443 to read data, and instead asks Elastic Runtime for the port the firehose comes from.
-
-### Release Notes
-
-* Upgrading from Ops Metrics 1.4.X to 1.6.X will leave the firehose nozzle job disabled (since it did not exist previously).
-* Upgrading from Ops Metrics 1.5.X to 1.6.X will enable the firehose nozzle by default (since it was enabled before upgrading).
-  * If you are upgrading to resolve an installation error with 1.5.X, immediately disable the firehose job before deploying, and enable once you have deployed Elastic Runtime.
-* Stemcell for 1.6.17 is 3232.17
-
-
-### Known issues
-
-<p class="note"><strong>Note</strong>: Some of the issues below may be fixed in subsequent patch releases to 1.6. Consult the Ops Metrics 1.6 release notes above for more information.</p>
-
-For releases earlier than 1.6.17:
-
-* An increase in disconnects between the OpenTSDB Firehose Nozzle and the Firehose, resulting in a need to restart the nozzle, may be due to the NOAA client becoming too far out-of-date. Version 1.6.17 updates the NOAA client and other service related dependencies.
-
-For all 1.6.X releases:
-
-* To fix the possibility of installation deadlock with Elastic Runtime 1.6.X, the OpenTSDB Firehose Nozzle job (responsible for receiving Diego metric data) has been disabled by default.
 * There is nothing that prevents the user from turning on the Nozzle deployment when Elastic Runtime is not present.
   * Enabling the nozzle when Elastic Runtime is not deployed or enabled will produce the following error:
   * "RuntimeError - unknown product 'cf' in (( ..cf.cloud\_controller.system_domain.value ))"
   * To fix this, reduce the number of nozzle counts to zero until Elastic Runtime is enabled.
-* Because deploying the OpenTSDB firehose nozzle is now optional, smoke tests for Elastic Runtime have been disabled until a later release.
+* Because deploying the OpenTSDB firehose nozzle is optional and disabled by default, smoke tests for Elastic Runtime have been disabled until a later release.
 
-For the 1.6.0 release:
-
-* Leaving the port blank in Elastic Runtime would cause the OpenTSDB firehose nozzle to try to listen to port 0. To fix, enter port 443 in Elastic Runtime or use Ops Metrics 1.6.1 .
-
+##Past Minor Version 1.7.X
+Release Notes for 1.7.X releases can be found [here](http://docs.pivotal.io/jmx-bridge/1-7/rn-ki.html). 
 
