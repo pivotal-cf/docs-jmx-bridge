@@ -5,6 +5,19 @@ owner: Metrix
 
 <p class="note"><strong>Note</strong>: Before version 1.7.X, JMX Bridge was known as Ops Metrics. For Ops Metrics release notes and known issues, see <a href="#1-6">Version 1.6.16</a>. </p>
 
+##<a id='v1.8.4'></a>Version 1.8.4
+**Release Date: September 22, 2016**
+
+### Release Notes
+* JMX Bridge 1.8.4 - now with stemcell 3263
+
+### Known issues
+* There is nothing that prevents the user from turning on the Nozzle deployment when Elastic Runtime is not present.
+  * Enabling the nozzle when Elastic Runtime is not deployed or enabled will produce the following error:
+  * "RuntimeError - unknown product 'cf' in (( ..cf.cloud\_controller.system_domain.value ))"
+  * To fix this, reduce the number of nozzle counts to zero until Elastic Runtime is enabled.
+* Because deploying the OpenTSDB firehose nozzle is optional and disabled by default, smoke tests for Elastic Runtime have been disabled until a later release.
+
 ##<a id='v1.8.3'></a>Version 1.8.3
 **Release Date: September 20, 2016**
 
