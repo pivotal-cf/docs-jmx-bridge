@@ -9,7 +9,7 @@ The JMX Bridge tool is a JMX extension for Elastic Runtime. Follow the instructi
 
 ## <a id='import'></a>Step 1: Install the JMX Bridge Tile ##
 
-<p class="note"><strong>Note</strong>: To use the Firehose nozzle, you must install <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> before installing JMX Bridge. If you install in reverse order, JMX will display numerous errors, and you may experience a bad connection between the Firehose nozzle and the JMX provider.</p>
+<p class="note"><strong>Note</strong>: To enable metrics from the Firehose, install <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> before installing JMX Bridge.</p>
 
 1. [Download JMX Bridge](https://network.pivotal.io/products/ops-metrics).
 
@@ -90,13 +90,22 @@ This is enabled by default.
 download from the JMX Bridge tile configuration status tab, then 
 fetching the download from the logs tab.</p>
 
-## <a id='resource-config'></a>Step 6: Resource Configuration ##
+## <a id='config-firehose-connection'></a>(Optional) Step 6: Disable/Enable Firehose Connection##
 
-<p class="note"><strong>Note</strong>: Do not change the <strong>OpenTSDB Firehose Nozzle</strong> instance count unless you have a running Elastic Runtime installation.</p>
+1. Select the **Enable Firehose Connection** checkbox.
+By default, metrics from the firehose are not received by the JMX Bridge. Check this box to enable metrics from the
+Cloud Foundry firehose.
+ 
+    <%= image_tag("images/jmxbridge-enable-firehose-connection.png") %>
 
-To receive metrics data from the PCF Elastic Runtime firehose, including Diego metrics, change the **OpenTSDB Firehose Nozzle** instance count from `0` to `1`.
+## <a id='config-opentsdb-compatibility'></a>(Optional) Step 7: Disable/Enable OpenTSDB Naming Compatibility##
 
-## <a id='apply'></a>Step 7: Apply Changes ##
+1. Select the **Enable OpenTSDB Compatibility Mode** checkbox.
+When this box is checked, the JMX Bridge exposes metrics using opentsdb.nozzle.* naming convention.
+ 
+    <%= image_tag("images/jmxbridge-opentsdb-compatibility.png") %>
+
+## <a id='apply'></a>Step 8: Apply Changes ##
 
 1. Navigate to the PCF Ops Manager Installation Dashboard.
 
@@ -106,7 +115,7 @@ To receive metrics data from the PCF Elastic Runtime firehose, including Diego m
 
 1. When complete, a “Changes Applied” message appears.
 
-## <a id='get-ip'></a>Step 8: Find the IP of the JMX Provider ##
+## <a id='get-ip'></a>Step 9: Find the IP of the JMX Provider ##
 
 1. Click **Return to Product Dashboard**.
 
@@ -117,7 +126,7 @@ To receive metrics data from the PCF Elastic Runtime firehose, including Diego m
 1. Record the IP address of the **JMX Provider**.
 <p class="note"><strong>Note</strong>: After installation, your JMX client connects to this IP address at port 44444 using the credentials that you  supplied. Also ensure that TCP port 44445 is open.</p>
 
-## <a id='config-ip'></a>Step 9: Configure the Metrics IP Address ##
+## <a id='config-ip'></a>Step 10: Configure the Metrics IP Address ##
 
 1. Return to the **Installation Dashboard**.
 Click the **Ops Manager Director** tile and select **Director Config**.
@@ -128,7 +137,7 @@ Click the **Ops Manager Director** tile and select **Director Config**.
 Provider.
 Click **Save**.
 
-## <a id='complete'></a>Step 10: Complete Installation ##
+## <a id='complete'></a>Step 11: Complete Installation ##
 
 1. In the Pending Changes view, click **Apply Changes**.
 
