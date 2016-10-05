@@ -76,13 +76,27 @@ credentials.
 
 1. Once you have provided an SSL certificate and private key, click **Save**.
 
-## <a id='resource-config'></a>Step 5: Resource Configuration ##
+## <a id='jmx-resource-config'></a>Step 5: JMX Resource Configuration ##
 
 <p class="note"><strong>Note</strong>: Do not change the <strong>OpenTSDB Firehose Nozzle</strong> instance count unless you have a running Elastic Runtime installation.</p>
 
 To receive metrics data from the PCF Elastic Runtime firehose, including Diego metrics, change the **OpenTSDB Firehose Nozzle** instance count from `0` to `1`.
 
-## <a id='apply'></a>Step 6: Apply Changes ##
+## <a id='ert-resource-config'></a>Step 6: ERT Resource Configuration ##
+
+<p class="note"><strong>Note</strong>:  Metrics coming from the Cloud Controller, the (Go)Router, and ETCD flow through the Collector and not the Firehose. In order to receive these metrics, the <b>Collector</b> must be enabled in the Elastic Runtime Tile.</p>
+
+1. Navigate to the PCF Ops Manager Installation Dashboard.
+
+1. Click on the **Elastic Runtime Tile** and select **Resource Config** under the **Settings** tab.
+
+1. Change the **Collector** instance count from `0` to `1`.
+
+    <%= image_tag("images/ops-metrics-collector-scale.png") %>
+
+1. Click **Save**.
+
+## <a id='apply'></a>Step 7: Apply Changes ##
 
 1. Navigate to the PCF Ops Manager Installation Dashboard.
 
@@ -92,7 +106,7 @@ To receive metrics data from the PCF Elastic Runtime firehose, including Diego m
 
 1. When complete, a “Changes Applied” message appears.
 
-## <a id='get-ip'></a>Step 7: Find the IP of the JMX Provider ##
+## <a id='get-ip'></a>Step 8: Find the IP of the JMX Provider ##
 
 1. Click **Return to Product Dashboard**.
 
@@ -103,7 +117,7 @@ To receive metrics data from the PCF Elastic Runtime firehose, including Diego m
 1. Record the IP address of the **JMX Provider**.
 <p class="note"><strong>Note</strong>: After installation, your JMX client connects to this IP address at port 44444 using the credentials that you  supplied. Also ensure that TCP port 44445 is open.
 
-## <a id='config-ip'></a>Step 8: Configure the Metrics IP Address ##
+## <a id='config-ip'></a>Step 9: Configure the Metrics IP Address ##
 
 1. Return to the **Installation Dashboard**.
 Click the **Ops Manager Director** tile and select **Director Config**.
@@ -114,7 +128,7 @@ Click the **Ops Manager Director** tile and select **Director Config**.
 Provider.
 Click **Save**.
 
-## <a id='complete'></a>Step 9: Complete Installation ##
+## <a id='complete'></a>Step 10: Complete Installation ##
 
 1. In the Pending Changes view, click **Apply Changes**.
 
