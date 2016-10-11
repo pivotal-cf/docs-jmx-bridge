@@ -5,6 +5,20 @@ owner: Metrix
 
 <p class="note"><strong>Note</strong>: Before version 1.7.X, JMX Bridge was known as Ops Metrics. For Ops Metrics release notes and known issues, see <a href="https://docs.pivotal.io/pivotalcf/1-6/pcf-release-notes/p1-v1.6/opsmetrics_rn_1_6.html">Version 1.6.X</a>. </p>
 
+##<a id='v1.8.6'></a>Version 1.8.6
+**Release Date: October 11, 2016**
+
+### Release Notes
+* JMX Bridge 1.8.6 - BUG FIX: As of PCF 1.8, the firehose began to send the dropsonde envelope index as a GUID instead of an integer. The OpenTSDB nozzle, if enabled, continued to assume parsing by integer causing some null values to be output. As of 1.8.6, the OpenTSDB nozzle now correctly parses the index field as a GUID.
+* Stemcell for 1.8.6 remains 3263
+
+### Known issues
+* There is nothing that prevents the user from turning on the Nozzle deployment when Elastic Runtime is not present.
+  * Enabling the nozzle when Elastic Runtime is not deployed or enabled will produce the following error:
+  * "RuntimeError - unknown product 'cf' in (( ..cf.cloud\_controller.system_domain.value ))"
+  * To fix this, reduce the number of nozzle counts to zero until Elastic Runtime is enabled.
+* Because deploying the OpenTSDB firehose nozzle is optional and disabled by default, smoke tests for Elastic Runtime have been disabled until a later release.
+
 ##<a id='v1.8.4'></a>Version 1.8.4
 **Release Date: September 22, 2016**
 
@@ -12,6 +26,7 @@ owner: Metrix
 * JMX Bridge 1.8.4 - now with stemcell 3263
 
 ### Known issues
+* BUG IDENTIFIED: Prior versions of JMX 1.8.x before 1.8.6 did not properly account for a Firehose change (appearing as of PCF 1.8), where the Firehose (aka Loggregator) began to send the dropsonde envelope index as a GUID instead of an integer. When enabled, the OpenTSDB nozzle parsed the index field as an integer, causing parsing failure. As of JMX 1.8.6 and later, this OpenTSDB parsing now assumes GUID instead of integer. 
 * There is nothing that prevents the user from turning on the Nozzle deployment when Elastic Runtime is not present.
   * Enabling the nozzle when Elastic Runtime is not deployed or enabled will produce the following error:
   * "RuntimeError - unknown product 'cf' in (( ..cf.cloud\_controller.system_domain.value ))"
@@ -30,6 +45,7 @@ owner: Metrix
 * Stemcell for 1.8.3 remains 3262
 
 ### Known issues
+* BUG IDENTIFIED: Prior versions of JMX 1.8.x before 1.8.6 did not properly account for a Firehose change (appearing as of PCF 1.8), where the Firehose (aka Loggregator) began to send the dropsonde envelope index as a GUID instead of an integer. When enabled, the OpenTSDB nozzle parsed the index field as an integer, causing parsing failure. As of JMX 1.8.6 and later, this OpenTSDB parsing now assumes GUID instead of integer. 
 * There is nothing that prevents the user from turning on the Nozzle deployment when Elastic Runtime is not present.
   * Enabling the nozzle when Elastic Runtime is not deployed or enabled will produce the following error:
   * "RuntimeError - unknown product 'cf' in (( ..cf.cloud\_controller.system_domain.value ))"
@@ -45,6 +61,7 @@ owner: Metrix
 
 ### Known issues
 * BUG IDENTIFIED: The new security logging feature expected in JMX Bridge 1.8.X was not available to the operator in the tile config in version 1.8.2. JMX Bridge 1.8.3 corrects this.
+* BUG IDENTIFIED: Prior versions of JMX 1.8.x before 1.8.6 did not properly account for a Firehose change (appearing as of PCF 1.8), where the Firehose (aka Loggregator) began to send the dropsonde envelope index as a GUID instead of an integer. When enabled, the OpenTSDB nozzle parsed the index field as an integer, causing parsing failure. As of JMX 1.8.6 and later, this OpenTSDB parsing now assumes GUID instead of integer. 
 * There is nothing that prevents the user from turning on the Nozzle deployment when Elastic Runtime is not present.
   * Enabling the nozzle when Elastic Runtime is not deployed or enabled will produce the following error:
   * "RuntimeError - unknown product 'cf' in (( ..cf.cloud\_controller.system_domain.value ))"
