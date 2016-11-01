@@ -16,22 +16,12 @@ The JMX Bridge tool is composed of three virtual machines:
 
 To deploy JMX Bridge, see the [Deploying JMX Bridge](./deploy-metrics.html) topic.
 
-## <a id='metricsprefix'></a>Metric Name Changes in PCF 1.8 ##
-In JMX Bridge 1.8, [metrics](https://docs.pivotal.io/pivotalcf/1-8/loggregator/all_metrics.html) from a PCF foundation travel through two paths to the JMX Bridge endpoint: the Firehose and the Bosh Director. 
-
-In PCF 1.7 and JMX Bridge 1.7, the collector was still a metrics flow path for Cloud Controller, (Go)Router, and ETCD metrics.
-With PCF 1.8 and JMX Bridge 1.8, the collector was retired and these components now broadcast via the Firehose. 
-
-Some older metrics may have been retired or had their names updated, see [PCF 1.8 metrics](https://docs.pivotal.io/pivotalcf/1-8/loggregator/all_metrics.html) for more information on the individual component metrics. 
-
-In JMX Bridge 1.8 all metrics that travel through the JMX Bridge Firehose nozzle are prepended with the naming convention `opentsdb.nozzle.<metric>`
-
-## <a id='upgrade'></a>Resolve Upgrade Error for 1.6 to 1.7 ##
-If you see the following error during an upgrade from Ops Metrics 1.6 to JMX Bridge 1.7.x:
+## <a id='upgrade'></a>Resolve Upgrade Error for v1.6 to v1.7 ##
+If you see the following error during an upgrade from Ops Metrics v1.6 to JMX Bridge v1.7.x:
 
 **This product requires a stemcell that is older than the currently installed product. Download the newest version of this product from Pivotal Network and try again.**
    
-[Upgrade Ops Manager](https://docs.pivotal.io/pivotalcf/1-7/customizing/upgrading-pcf.html) to 1.7.8 or later. The error above results from a known issue and newer versions of Ops Manager resolve the issue.
+[Upgrade Ops Manager](https://docs.pivotal.io/pivotalcf/1-7/customizing/upgrading-pcf.html) to v1.7.8 or later. The error above results from a known issue and newer versions of Ops Manager resolve the issue.
 
 ## <a id='uninstall'></a>Uninstall JMX Bridge (formerly Ops Metrics) ##
 
