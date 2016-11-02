@@ -8,32 +8,15 @@ owner: PCF Metrics
 The JMX Bridge tool (formerly Ops Metrics) is a JMX extension for Elastic Runtime. JMX Bridge collects and exposes system data from Cloud Foundry components via a JMX endpoint.
 Use this system data to monitor your installation and assist in troubleshooting.
 
-The JMX Bridge tool is composed of three virtual machines:
+The JMX Bridge tool is composed of two virtual machines:
 
 - The JMX Provider
-- A VM that governs compilation
-- A nozzle for the [Loggregator Firehose](https://docs.pivotal.io/pivotalcf/1-7/loggregator/architecture.html)
+- A nozzle for the [Loggregator Firehose](https://docs.pivotal.io/pivotalcf/1-8/loggregator/architecture.html)
 
 To deploy JMX Bridge, see the [Deploying JMX Bridge](./deploy-metrics.html) topic.
 
-## <a id='upgrade'></a>Resolve Upgrade Error for v1.6 to v1.7 ##
-If you see the following error during an upgrade from Ops Metrics v1.6 to JMX Bridge v1.7.x:
-
-**This product requires a stemcell that is older than the currently installed product. Download the newest version of this product from Pivotal Network and try again.**
-   
-[Upgrade Ops Manager](https://docs.pivotal.io/pivotalcf/1-7/customizing/upgrading-pcf.html) to v1.7.8 or later. The error above results from a known issue and newer versions of Ops Manager resolve the issue.
-
 ## <a id='uninstall'></a>Uninstall JMX Bridge (formerly Ops Metrics) ##
-
-1. Scale the collector resource from Elastic Runtime to `0`.
-
-    <%= image_tag("images/ops-metrics-collector-scale.png") %>
-
-    If you do not scale the collector resource, you get the following error:
-
-    ![Pivotal Elastic Runtime requires p-metrics version ~> 1.2 as a dependency](images/ops-metrics-delete-error.png)
-
-1. Proceed with uninstallation. See the [Deleting a Product](https://docs.pivotal.io/pivotalcf/1-7/customizing/add-delete.html#del-prod) section of the [Adding and Deleting Products](https://docs.pivotal.io/pivotalcf/1-7/customizing/add-delete.html) topic for details.
+See the [Deleting a Product](https://docs.pivotal.io/pivotalcf/1-8/customizing/add-delete.html#del-prod) section of the [Adding and Deleting Products](https://docs.pivotal.io/pivotalcf/1-8/customizing/add-delete.html) topic for details.
 
 ## <a id='no-metrics'></a>Missing Metrics from PCF Installation or Firehose ##
 If you are not seeing expected metrics from Elastic Runtime in the JMX provider, verify that you installed Elastic Runtime prior to JMX Bridge. If JMX Bridge was installed first, perform the following steps:
