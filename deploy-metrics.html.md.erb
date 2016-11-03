@@ -9,7 +9,8 @@ The JMX Bridge tool is a JMX extension for Elastic Runtime. Follow the instructi
 
 ## <a id='import'></a>Step 1: Install the JMX Bridge Tile ##
 
-<p class="note"><strong>Note</strong>: To use the Firehose nozzle, you must install <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> before installing JMX Bridge. If you install in reverse order, JMX will display numerous errors, and you may experience a bad connection between the Firehose nozzle and the JMX provider.</p>
+<p class="note"><strong>Note</strong>: To use the Firehose nozzle, you <strong>must</strong> install <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> before installing JMX Bridge. 
+Starting in 1.8.7, the JMX Bridge product enforces this install order dependency. </p>
 
 1. [Download JMX Bridge](https://network.pivotal.io/products/ops-metrics).
 
@@ -90,11 +91,29 @@ This is enabled by default.
 download from the JMX Bridge tile configuration status tab, then 
 fetching the download from the logs tab.</p>
 
-## <a id='resource-config'></a>Step 6: Resource Configuration ##
+## <a id='errands'></a>(Optional) Step 5: Configure Errands ##
 
-<p class="note"><strong>Note</strong>: Do not change the <strong>OpenTSDB Firehose Nozzle</strong> instance count unless you have a running Elastic Runtime installation.</p>
+<p>Errands are scripts that Ops Manager runs to automate tasks. 
+By default, Ops Manager runs the post-install errands listed below when you deploy PCF JMX Bridge. 
+However, you can prevent a specific post-install errand from running by deselecting its checkbox on the Errands page.</p>
 
-To receive metrics data from the PCF Elastic Runtime firehose, including Diego metrics, change the **OpenTSDB Firehose Nozzle** instance count from `0` to `1`.
+  <%= image_tag("images/jmx-errands.png") %>
+    
+* **Smoke tests for JMX Bridge** verifies the following: 
+  * If the Firehose Nozzle is enabled, that the Nozzle is receiving metrics
+  * If the Firehose Nozzle is enabled, that the product is not a slow consumer
+  * If <a href="#config-ip">Bosh Metrics</a> are enabled, that the product is receiving appropriate health metrics
+
+<p class="note"><strong>Note</strong>:If any errors occur during the install due to smoke tests, 
+refer to the <a href="./troubleshooting-uninstall-metrics.html#smoke-tests">troubleshooting docs</a> for more information.</p>
+
+## <a id='resource-config'></a>(Optional) Step 6: Resource Configuration ##
+
+<p class="note"><strong>Note</strong>: As of JMX Bridge 1.8.7, the Firehose Nozzle is now <strong>enabled</strong> by default, instead of disabled as in prior versions, and requires <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> as a depedency to enable</p>
+<p class="note"><strong>Note</strong>: Do not change the <strong>OpenTSDB Firehose Nozzle</strong> instance count unless you do not have a running Elastic Runtime installation.</p>
+
+To disable the Firehose Nozzle and/or stop receiving <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a>(including Diego) metrics, 
+change the instance count of the **OpenTSDB Firehose Nozzle** from `1` to `0`. 
 
 ## <a id='apply'></a>Step 7: Apply Changes ##
 
