@@ -110,7 +110,6 @@ refer to the <a href="./troubleshooting-uninstall-metrics.html#smoke-tests">trou
 ## <a id='resource-config'></a>(Optional) Step 6: Resource Configuration ##
 
 <p class="note"><strong>Note</strong>: As of JMX Bridge 1.8.7, the Firehose Nozzle is now <strong>enabled</strong> by default, instead of disabled as in prior versions, and requires <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> as a depedency to enable</p>
-<p class="note"><strong>Note</strong>: Do not change the <strong>OpenTSDB Firehose Nozzle</strong> instance count unless you do not have a running Elastic Runtime installation.</p>
 
 To disable the Firehose Nozzle and/or stop receiving <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a>(including Diego) metrics, 
 change the instance count of the **OpenTSDB Firehose Nozzle** from `1` to `0`. 
