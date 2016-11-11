@@ -5,6 +5,25 @@ owner: Metrix
 
 <p class="note"><strong>Note</strong>: Before v1.7.X, JMX Bridge was known as Ops Metrics. For Ops Metrics release notes and known issues, see <a href="https://docs.pivotal.io/pivotalcf/1-6/pcf-release-notes/p1-v1.6/opsmetrics_rn_1_6.html">Version 1.6.X</a>. </p>
 
+##<a id='v1.8.7'></a>Version 1.8.7
+**Release Date: November 10, 2016**
+
+### Release Notes
+* JMX Bridge v1.8.7 - Now enforces the dependency stated in the product documentation to install <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> before installing JMX Bridge
+    * Enforcing the correct installation order ensures a good connection between JMX Bridge and the firehose
+    * If installation of JMX Bridge is attempted before Elastic Runtime, the user will now receive an installation error stating the required dependency  
+* **Enhancement**: The firehose nozzle is now enabled by default on installation
+    * This enhancement addresses common feedback that the majority of use cases require the firehose to be enabled, and therefore eliminating the nozzle enablement step speeds product installation 
+    * For product use cases that do not include firehose nozzle usage, the OpenTSDB nozzle may still be disabled
+    * OpenTSDB nozzle enabled/disabled preference will continue to be retained through future upgrades
+* **Enhancement**: The tile now includes Smoke Tests which are executed via errand upon installation/upgrade
+    * Any errors resulting from the smoke tests will be summarized at the end of the log output, and can be referenced against the product <a href="https://docs.pivotal.io/jmx-bridge/1-8/troubleshooting-uninstall-metrics.html">troubleshooting</a> documentation
+* Updates the OpenJDK version to v1.8.0.111
+* Stemcell for v1.8.7 remains v3263
+
+### Known issues
+* None
+
 ##<a id='v1.8.6'></a>Version 1.8.6
 **Release Date: October 11, 2016**
 
