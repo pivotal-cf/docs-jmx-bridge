@@ -27,17 +27,17 @@ Starting in 1.8.7, the JMX Bridge product enforces this install order dependency
 
 1. Select **Assign AZs and Networks**. This section shows the Availability Zones that you [create](https://docs.pivotal.io/pivotalcf/1-7/customizing/vsphere-config.html#create-az) when configuring Ops Manager Director.
 
-1. (**vSphere and Amazon Web Services Only**) Select an Availability Zone under **Place singleton jobs in**. Ops Manager runs Metrics jobs with a single instance in this Availability Zone.
+1. (vSphere and Amazon Web Services Only) Select an Availability Zone under **Place singleton jobs in**. Ops Manager runs Metrics jobs with a single instance in this Availability Zone.
 
 1. (**vSphere and Amazon Web Services Only**) Select one or more Availability Zones under **Balance other jobs in**. Ops Manager balances instances of Metrics jobs with more than one instance across the Availability Zones that you specify.
 
     <%= image_tag("images/assign-az.png") %>
 
-1. Use the drop-down menu to select a Network.
+1. Select a Network from the drop down menu.
     <p class='note'><strong>Note</strong>: JMX Bridge uses the default Assigned Network if you do not select a different network.</p>
 
 1. Click **Save**.
-  <p class="note"><strong>Note</strong>: When you save this form, a verification error displays because the PCF security group blocks ICMP. You can ignore this error.</p>
+  <p class="note"><strong>Note</strong>: When you save this form, the following verification error displays because the PCF security group blocks ICMP. You can ignore this error.</p>
     <%= image_tag("images/er-network-error.png") %>
 
 ## <a id='config-jmx-provider'></a>Step 3: Configure JMX Provider ##
@@ -73,7 +73,7 @@ credentials.
 
     <%= image_tag("images/ops-metrics-jmx-cert.png") %>
 
-1. Once you have provided an SSL certificate and private key, click **Save**.
+1. After providing an SSL certificate and private key, click **Save**.
 
 ## <a id='config-security-logging'></a>(Optional) Step 5: Disable/Enable Security Logging ##
 
@@ -99,20 +99,20 @@ However, you can prevent a specific post-install errand from running by deselect
 
   <%= image_tag("images/jmx-errands.png") %>
     
-* **Smoke tests for JMX Bridge** verifies the following: 
+* Select **Smoke tests for JMX Bridge** to cause the JMX Bridge to verify the following: 
   * If the Firehose Nozzle is enabled, that the Nozzle is receiving metrics
   * If the Firehose Nozzle is enabled, that the product is not a slow consumer
   * If <a href="#config-ip">Bosh Metrics</a> are enabled, that the product is receiving appropriate health metrics
 
-<p class="note"><strong>Note</strong>:If any errors occur during the install due to smoke tests, 
+<p class="note"><strong>Note</strong>:If errors occur during the install due to smoke tests, 
 refer to the <a href="./troubleshooting-uninstall-metrics.html#smoke-tests">troubleshooting docs</a> for more information.</p>
 
 ## <a id='resource-config'></a>(Optional) Step 6: Resource Configuration ##
 
-<p class="note"><strong>Note</strong>: As of JMX Bridge 1.8.7, the Firehose Nozzle is now <strong>enabled</strong> by default, instead of disabled as in prior versions, and requires <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> as a depedency to enable</p>
+<p class="note"><strong>Note</strong>: In JMX Bridge 1.8.7, the Firehose Nozzle is enabled by default and requires <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> as a depedency.</p>
 
 To disable the Firehose Nozzle and/or stop receiving <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a>(including Diego) metrics, 
-change the instance count of the **OpenTSDB Firehose Nozzle** from `1` to `0`. 
+modify the instance count of the **OpenTSDB Firehose Nozzle** from `1` to `0`. 
 
 ## <a id='apply'></a>Step 7: Apply Changes ##
 
@@ -122,7 +122,7 @@ change the instance count of the **OpenTSDB Firehose Nozzle** from `1` to `0`.
 
     <%= image_tag("images/ops-metrics-pending-changes.png") %>
 
-1. When complete, a “Changes Applied” message appears.
+After installation completes, a message appears stating that the changes have been applied.
 
 ## <a id='get-ip'></a>Step 8: Find the IP of the JMX Provider ##
 
@@ -152,9 +152,10 @@ Click **Save**.
 
     <%= image_tag("images/ops-metrics-pending-changes.png") %>
 
-1. When complete, a "Changes Applied" message appears.
-Click **Return to Product Dashboard**.
+   When complete, a message appears stating that the changes have been applied.
+
+1. Click **Return to Product Dashboard**.
  JMX Bridge is now installed and configured.
 
-Once installed and configured, metrics for Cloud Foundry components
+After installation and configuration, metrics for Cloud Foundry components
 automatically report to the JMX endpoint.
