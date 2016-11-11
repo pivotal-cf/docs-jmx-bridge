@@ -15,8 +15,18 @@ The JMX Bridge tool is composed of two virtual machines:
 
 To deploy JMX Bridge, see the [Deploying JMX Bridge](./deploy-metrics.html) topic.
 
+## <a id='dependency'></a>Dependency Error during install##
+  <%= image_tag("images/jmx-ert-install-depedency.png") %>
+<p> If you see the above error during installation of the JMX Bridge tile:</p>
+
+1. <a href="https://network.pivotal.io/products/elastic-runtime">Download</a> and add the Elastic Runtime tile
+1. <a href="https://docs.pivotal.io/pivotalcf/1-8/installing/index.html">Configure</a> Elastic Runtime in your environment
+1. Click `Apply Changes` and continue your install with both products
+
+
 ## <a id='uninstall'></a>Uninstall JMX Bridge (formerly Ops Metrics) ##
 See the [Deleting a Product](https://docs.pivotal.io/pivotalcf/1-8/customizing/add-delete.html#del-prod) section of the [Adding and Deleting Products](https://docs.pivotal.io/pivotalcf/1-8/customizing/add-delete.html) topic for details.
+
 
 ## <a id='no-metrics'></a>Missing Metrics from PCF Installation or Firehose ##
 If you are not seeing expected metrics from Elastic Runtime in the JMX provider, verify that you installed Elastic Runtime prior to JMX Bridge. If JMX Bridge was installed first, perform the following steps:
@@ -26,3 +36,64 @@ If you are not seeing expected metrics from Elastic Runtime in the JMX provider,
        <pre class="terminal">$ sudo -i</pre>
 1. Restart the `opentsdb-firehose-nozzle` job. 
        <pre class="terminal">$ monit restart opentsdb-firehose-nozzle</pre>
+       
+## <a id='bosh-metrics'></a>Missing Bosh Metrics ##
+If you are not seeing expected metrics from Bosh, Try the following:
+
+1. Verify that the IP in `JMX Bridge` -> `Status` -> `JMX Provider` IP matches the value entered in
+      `Ops Manager Director` -> `Director Config` -> `Metrics IP Address`
+1. If still no bosh metrics are coming through the system, 
+   please contact <a href="https://support.pivotal.io/">Pivotal Support</a>
+       
+## <a id='smoke-tests'></a>Smoke Tests ##
+
+If errors occur while the smoke tests run, they will be found in the `ChangeLog` for the installation.
+Some common failures are listed below.
+
+<table border='1' class='nice'>
+<tr>
+  <th width="22%">Error</th>
+  <td><code>internalMetricsAreSent() Fails</code>
+  </td>
+</tr>
+<tr>
+  <th>Cause</th>
+  <td>The Firehose Nozzle did not receive health metrics</td>
+</tr>
+<tr>
+  <th>Solution</th>
+  <td>Restart the Firehose Nozzle VM.</td>
+</tr>
+</table>
+
+<table border='1' class='nice'>
+<tr>
+  <th width="22%">Error</th>
+  <td><code>slowConsumerAlertIsZero() Fails</code>
+  </td>
+</tr>
+<tr>
+  <th>Cause</th>
+  <td>The Firehose Nozzle cannot keep up with the load of the Firehose</td>
+</tr>
+<tr>
+  <th>Solution</th>
+  <td>Scale up the number of Firehose Nozzles in `Resource Config`.</td>
+</tr>
+</table>
+
+<table border='1' class='nice'>
+<tr>
+  <th width="22%">Error</th>
+  <td><code>receivingFirehoseMetrics() Fails</code>
+  </td>
+</tr>
+<tr>
+  <th>Cause</th>
+  <td>The Firehose Nozzle is not receiving metrics from the firehose</td>
+</tr>
+<tr>
+  <th>Solution</th>
+  <td>Restart the Firehose Nozzle VM</td>
+</tr>
+</table>
