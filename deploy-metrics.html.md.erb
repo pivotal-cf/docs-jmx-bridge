@@ -75,27 +75,22 @@ credentials.
 
 1. After providing an SSL certificate and private key, click **Save**.
 
-## <a id='config-security-logging'></a>(Optional) Step 5: Disable/Enable Security Logging ##
+## <a id='config-security-logging'></a>(Optional) Step 5: Disable or Enable Security Logging ##
 
 1. Select the **Enable Security Logging** checkbox.
 Access to the JMX endpoint is logged to STDOUT by default. 
-This security logging can be enabled/disabled in the JMX Bridge tile 
-configuration by checking/unchecking this checkbox.
-This is enabled by default.
+You can enable this security logging in the JMX Bridge tile configuration by selecting this checkbox, or disable it deselecting this checkbox. Security logging is enabled by default.
 
     <%= image_tag("images/jmxbridge-enable-security-logging.png") %>
     
 1. If you have enabled or disabled security logging, click **Save**.
 
-<p class="note"><strong>Note</strong>:Related log output is made available by initiating a JMX Provider logs 
-download from the JMX Bridge tile configuration status tab, then 
-fetching the download from the logs tab.</p>
+<p class="note"><strong>Note</strong>: Related log output is made available by initiating a JMX Provider logs download from the JMX Bridge tile configuration status tab, then  fetching the download from the logs tab.</p>
 
-## <a id='errands'></a>(Optional) Step 5: Configure Errands ##
+## <a id='errands'></a>(Optional) Step 6: Configure Errands ##
 
 <p>Errands are scripts that Ops Manager runs to automate tasks. 
-By default, Ops Manager runs the post-install errands listed below when you deploy PCF JMX Bridge. 
-However, you can prevent a specific post-install errand from running by deselecting its checkbox on the Errands page.</p>
+By default, Ops Manager runs the post-install errands listed below when you deploy PCF JMX Bridge. However, you can prevent a specific post-install errand from running by deselecting its checkbox on the Errands page.</p>
 
   <%= image_tag("images/jmx-errands.png") %>
     
@@ -104,17 +99,15 @@ However, you can prevent a specific post-install errand from running by deselect
   * If the Firehose Nozzle is enabled, that the product is not a slow consumer
   * If <a href="#config-ip">Bosh Metrics</a> are enabled, that the product is receiving appropriate health metrics
 
-<p class="note"><strong>Note</strong>:If errors occur during the install due to smoke tests, 
-refer to the <a href="./troubleshooting-uninstall-metrics.html#smoke-tests">troubleshooting docs</a> for more information.</p>
+<p class="note"><strong>Note</strong>: If errors occur during the install due to smoke tests, refer to the <a href="./troubleshooting-uninstall-metrics.html#smoke-tests">troubleshooting documentation</a> for more information.</p>
 
-## <a id='resource-config'></a>(Optional) Step 6: Resource Configuration ##
+## <a id='resource-config'></a>(Optional) Step 7: Resource Configuration ##
 
-<p class="note"><strong>Note</strong>: In JMX Bridge 1.8.7, the Firehose Nozzle is enabled by default and requires <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> as a depedency.</p>
+<p class="note"><strong>Note</strong>: In JMX Bridge 1.8.7, the Firehose Nozzle is enabled by default and requires <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> as a dependency.</p>
 
-To disable the Firehose Nozzle and/or stop receiving <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a>(including Diego) metrics, 
-modify the instance count of the **OpenTSDB Firehose Nozzle** from `1` to `0`. 
+To disable the Firehose Nozzle and/or stop receiving <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> (including Diego) metrics, modify the instance count of the **OpenTSDB Firehose Nozzle** from `1` to `0`. 
 
-## <a id='apply'></a>Step 7: Apply Changes ##
+## <a id='apply'></a>Step 8: Apply Changes ##
 
 1. Navigate to the PCF Ops Manager Installation Dashboard.
 
@@ -124,7 +117,7 @@ modify the instance count of the **OpenTSDB Firehose Nozzle** from `1` to `0`.
 
 After installation completes, a message appears stating that the changes have been applied.
 
-## <a id='get-ip'></a>Step 8: Find the IP of the JMX Provider ##
+## <a id='get-ip'></a>Step 9: Find the IP Address of the JMX Provider ##
 
 1. Click **Return to Product Dashboard**.
 
@@ -135,7 +128,7 @@ After installation completes, a message appears stating that the changes have be
 1. Record the IP address of the **JMX Provider**.
 <p class="note"><strong>Note</strong>: After installation, your JMX client connects to this IP address at port 44444 using the credentials that you  supplied. Also ensure that TCP port 44445 is open.</p>
 
-## <a id='config-ip'></a>Step 9: Configure the Metrics IP Address ##
+## <a id='config-ip'></a>Step 10: Configure the Metrics IP Address ##
 
 1. Return to the **Installation Dashboard**.
 Click the **Ops Manager Director** tile and select **Director Config**.
@@ -146,16 +139,14 @@ Click the **Ops Manager Director** tile and select **Director Config**.
 Provider.
 Click **Save**.
 
-## <a id='complete'></a>Step 10: Complete Installation ##
+## <a id='complete'></a>Step 11: Complete Installation ##
 
 1. In the Pending Changes view, click **Apply Changes**.
 
     <%= image_tag("images/ops-metrics-pending-changes.png") %>
-
-   When complete, a message appears stating that the changes have been applied.
-
-1. Click **Return to Product Dashboard**.
- JMX Bridge is now installed and configured.
+    When complete, a message appears stating that the changes have been applied.
+<br>
+1. Click **Return to Product Dashboard**.  JMX Bridge is now installed and configured.
 
 After installation and configuration, metrics for Cloud Foundry components
 automatically report to the JMX endpoint.
