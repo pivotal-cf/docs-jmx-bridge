@@ -5,6 +5,16 @@ owner: Metrix
 
 <p class="note"><strong>Note</strong>: Before v1.7.X, JMX Bridge was known as Ops Metrics. For Ops Metrics release notes and known issues, see <a href="https://docs.pivotal.io/pivotalcf/1-6/pcf-release-notes/p1-v1.6/opsmetrics_rn_1_6.html">Version 1.6.X</a>. </p>
 
+##<a id='v1.8.8'></a>Version 1.8.8
+**Release Date: November 22, 2016**
+
+### Release Notes
+* JMX Bridge v1.8.8 — BUG FIX: Fixes the issue identified in v1.8.7 where the new integration tests would fail if the doppler instances were greater than 1. As of this version, the integration tests now correctly handle multiple doppler instances.
+* Stemcell for v1.8.8 remains v3263
+
+### Known issues
+* None
+
 ##<a id='v1.8.7'></a>Version 1.8.7
 **Release Date: November 10, 2016**
 
@@ -22,7 +32,7 @@ owner: Metrix
 * Stemcell for v1.8.7 remains v3263
 
 ### Known issues
-* None
+* BUG IDENTIFIED: The integration tests will fail if the doppler instances are greater than 1. The resolution to this issue is to disable the smoke tests, or to upgrade to v1.8.8 which contains a fix to this bug.
 
 ##<a id='v1.8.6'></a>Version 1.8.6
 **Release Date: October 11, 2016**
