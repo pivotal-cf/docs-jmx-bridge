@@ -19,14 +19,14 @@ To deploy JMX Bridge, see the [Deploying JMX Bridge](./deploy-metrics.html) topi
   <%= image_tag("images/jmx-ert-install-depedency.png") %>
 <p> If you see the above error during installation of the JMX Bridge tile:</p>
 
-1. Verify the Elastic Runtime tile version is greater than <b>1.8</b>. If it is not, install or upgrade using the following steps:
+1. Verify the Elastic Runtime tile version is greater than or equal to <b>1.8.0</b>. If it is not, install or upgrade using the following steps:
 
    1. <a href="https://network.pivotal.io/products/elastic-runtime">Download</a> and add the Elastic Runtime tile
    1. <a href="https://docs.pivotal.io/pivotalcf/1-8/installing/index.html">Configure</a> Elastic Runtime in your environment
    1. Click `Apply Changes` and continue your install with both products
 
-1. If the Elastic Runtime tile version is greater than or equal to <b>1.8.7</b>, then upgrade the JMX Bridge tile to <b>1.8.9</b> or above.  
-There is a known issue with the older versions of JMX Bridge and newer versions of Elastic Runtime. 
+1. If the installed Elastic Runtime tile version is greater than or equal to <b>1.8.17</b>, then you must upgrade the JMX Bridge tile to <b>1.8.9</b> or later.  
+There is a known issue with the older versions of JMX Bridge and newer versions of Elastic Runtime. JMX Bridge 1.8.2 through 1.8.8 will only work with Elastic Runtime 1.8.0 through 1.8.16. 
 
 
 ## <a id='uninstall'></a>Uninstall JMX Bridge (formerly Ops Metrics) ##
