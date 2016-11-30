@@ -10,9 +10,9 @@ owner: Metrix
 **Release Date: November 29, 2016**
 
 ### Release Notes
-* JMX Bridge v1.8.9 requires Elastic Runtime v1.8.17 or later. **Ensure that you upgrade to Elastic Runtime v1.8.17 or later before upgrading to PCF JMX Bridge v1.8.9 or later**.
-    * Earlier versions of Elastic Runtime v1.8 had an issue with the `provides_product_version` property. Elastic Runtime v1.8.17 and later correct this issue, which necessitated an update to how JMX Bridge v1.8 handles the property. The JMX Bridge update ensures that it continues to work on later versions of Elastic Runtime v1.8 and future versions of Elastic Runtime v1.9.  
-    * JMX Bridge v1.8.2 through v1.8.8 only work with Elastic Runtime v1.8.0 through v1.8.16. JMX Bridge v1.8.9 and later only work with Elastic Runtime v1.8.17 and later. Deviations from these compatibility rules result in a [dependency error](https://docs.pivotal.io/jmx-bridge/1-8/troubleshooting-uninstall-metrics.html#dependency) on install/upgrade.
+* JMX Bridge v1.8.9 — Earlier versions of Elastic Runtime v1.8 had an issue with the `provides_product_version` property. Elastic Runtime v1.8.17 and later correct this issue, which necessitated an update to how JMX Bridge v1.8 handles the property. 
+    * We recommend you upgrade to Elastic Runtime 1.8.17 or later, however JMX Bridge v1.8.9 can support Elastic Runtime v1.8.0 or later 
+    * Earlier versions of JMX Bridge (v1.8.2 through v1.8.8) will now only work with Elastic Runtime v1.8.0 through v1.8.16. 
 * The stemcell for v1.8.9 remains v3263.
 
 ### Known issues
@@ -26,7 +26,7 @@ owner: Metrix
 * Stemcell for v1.8.8 remains v3263
 
 ### Known issues
-* None
+* JMX Bridge v1.8.2 through v1.8.8 will only work with Elastic Runtime v1.8.0 through v1.8.16
 
 ##<a id='v1.8.7'></a>Version 1.8.7
 **Release Date: November 10, 2016**
@@ -46,6 +46,7 @@ owner: Metrix
 
 ### Known issues
 * BUG IDENTIFIED: The integration tests will fail if the doppler instances are greater than 1. The resolution to this issue is to disable the smoke tests, or to upgrade to v1.8.8 which contains a fix to this bug.
+* JMX Bridge v1.8.2 through v1.8.8 will only work with Elastic Runtime v1.8.0 through v1.8.16
 
 ##<a id='v1.8.6'></a>Version 1.8.6
 **Release Date: October 11, 2016**
@@ -61,6 +62,7 @@ The OpenTSDB nozzle, if enabled, continued to assume parsing by integer causing 
   * "RuntimeError — unknown product 'cf' in (( ..cf.cloud\_controller.system_domain.value ))"
   * To fix this, reduce the number of nozzle counts to zero until Elastic Runtime is enabled.
 * Because deploying the OpenTSDB firehose nozzle is optional and disabled by default, smoke tests for Elastic Runtime have been disabled until a later release.
+* JMX Bridge v1.8.2 through v1.8.8 will only work with Elastic Runtime v1.8.0 through v1.8.16
 
 ##<a id='v1.8.4'></a>Version 1.8.4
 **Release Date: September 22, 2016**
@@ -75,6 +77,7 @@ The OpenTSDB nozzle, if enabled, continued to assume parsing by integer causing 
   * "RuntimeError — unknown product 'cf' in (( ..cf.cloud\_controller.system_domain.value ))"
   * To fix this, reduce the number of nozzle counts to zero until Elastic Runtime is enabled.
 * Because deploying the OpenTSDB firehose nozzle is optional and disabled by default, smoke tests for Elastic Runtime have been disabled until a later release.
+* JMX Bridge v1.8.2 through v1.8.8 will only work with Elastic Runtime v1.8.0 through v1.8.16
 
 ##<a id='v1.8.3'></a>Version 1.8.3
 **Release Date: September 20, 2016**
@@ -94,6 +97,7 @@ The OpenTSDB nozzle, if enabled, continued to assume parsing by integer causing 
   * "RuntimeError — unknown product 'cf' in (( ..cf.cloud\_controller.system_domain.value ))"
   * To fix this, reduce the number of nozzle counts to zero until Elastic Runtime is enabled.
 * Because deploying the OpenTSDB firehose nozzle is optional and disabled by default, smoke tests for Elastic Runtime have been disabled until a later release.
+* JMX Bridge v1.8.2 through v1.8.8 will only work with Elastic Runtime v1.8.0 through v1.8.16
 
 ##<a id='v1.8.2'></a>Version 1.8.2
 **Release Date: September 16, 2016**
@@ -110,6 +114,7 @@ The OpenTSDB nozzle, if enabled, continued to assume parsing by integer causing 
   * "RuntimeError — unknown product 'cf' in (( ..cf.cloud\_controller.system_domain.value ))"
   * To fix this, reduce the number of nozzle counts to zero until Elastic Runtime is enabled.
 * Because deploying the OpenTSDB firehose nozzle is optional and disabled by default, smoke tests for Elastic Runtime have been disabled until a later release.
+* JMX Bridge v1.8.2 through v1.8.8 will only work with Elastic Runtime v1.8.0 through v1.8.16
 
 ## <a id='metricsprefix'></a>Metric Name Changes in PCF v1.8 ##
 In JMX Bridge v1.8, [metrics](https://docs.pivotal.io/pivotalcf/1-8/loggregator/all_metrics.html) from a PCF deployment travel through two paths to the JMX Bridge endpoint: the Firehose and the BOSH Director. 
