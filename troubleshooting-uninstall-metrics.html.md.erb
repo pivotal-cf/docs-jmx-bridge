@@ -5,35 +5,29 @@ owner: PCF Metrics
 
 <strong><%= modified_date %></strong>
 
-The JMX Bridge tool (formerly Ops Metrics) is a JMX extension for Elastic Runtime. JMX Bridge collects and exposes system data from Cloud Foundry components via a JMX endpoint.
-Use this system data to monitor your installation and assist in troubleshooting.
+This topic describes how to resolve common issues with the JMX Bridge for Pivotal Cloud Foundry (PCF) tile and uninstall if necessary. 
 
-The JMX Bridge tool is composed of two virtual machines:
+## <a id="troubleshot"></a> Troubleshoot
 
-- The JMX Provider
-- A nozzle for the [Loggregator Firehose](https://docs.pivotal.io/pivotalcf/1-8/loggregator/architecture.html)
+See the following sections for help with troubleshooting JMX Bridge for PCF. 
 
-To deploy JMX Bridge, see the [Deploying JMX Bridge](./deploy-metrics.html) topic.
+### <a id='dependency'></a>Dependency Error during Install##
 
-## <a id='dependency'></a>Dependency Error during install##
-  <%= image_tag("images/jmx-ert-install-depedency.png") %>
-<p> If you see the above error during installation of the JMX Bridge tile:</p>
+You may see the following error if your installed version of Elastic Runtime is not compatible with the JMX Bridge version you are attempting to install: 
 
-1. Verify the Elastic Runtime tile version is greater than or equal to <b>1.8.0</b>. If it is not, install or upgrade using the following steps:
+<%= image_tag("images/jmx-ert-install-depedency.png") %>
 
-   1. <a href="https://network.pivotal.io/products/elastic-runtime">Download</a> and add the Elastic Runtime tile
-   1. <a href="https://docs.pivotal.io/pivotalcf/1-8/installing/index.html">Configure</a> Elastic Runtime in your environment
-   1. Click `Apply Changes` and continue your install with both products
+Follow the instructions below that correspond to your installed Elastic Runtime version:
 
-1. If the installed Elastic Runtime tile version is greater than or equal to <b>1.8.17</b>, then you must upgrade the JMX Bridge tile to <b>1.8.9</b> or later.  
-There is a known issue with the older versions of JMX Bridge and newer versions of Elastic Runtime. JMX Bridge 1.8.2 through 1.8.8 will only work with Elastic Runtime 1.8.0 through 1.8.16. 
+* **Elastic Runtime 1.8.0 to 1.8.16**: 
+   1. Download version 1.8.17 or later of the <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime tile</a> and import it your Ops Manager **Installation Dashboard**.
+   1. Click the newly added tile to review any configurable options. If you need guidance, refer to the <a href="https://docs.pivotal.io/pivotalcf/installing/index.html">Installing Pivotal Cloud Foundry</a> topic and choose your IaaS.
+   1. Click **Apply Changes** to install both Elastic Runtime and JMX Bridge.
+* **Elastic Runtime 1.8.17 or later**: Upgrade the JMX Bridge tile to <b>1.8.9</b> or later.  
+  <p class="note"><strong>Note</strong>: There is a known issue with the older versions of JMX Bridge and the newer versions of Elastic Runtime. JMX Bridge 1.8.2 through 1.8.8 only work with Elastic Runtime 1.8.0 through 1.8.16.</p>
 
 
-## <a id='uninstall'></a>Uninstall JMX Bridge (formerly Ops Metrics) ##
-See the [Deleting a Product](https://docs.pivotal.io/pivotalcf/1-8/customizing/add-delete.html#del-prod) section of the [Adding and Deleting Products](https://docs.pivotal.io/pivotalcf/1-8/customizing/add-delete.html) topic for details.
-
-
-## <a id='no-metrics'></a>Missing Metrics from PCF Installation or Firehose ##
+### <a id='no-metrics'></a>Missing Metrics from PCF Installation or Firehose
 If you are not seeing expected metrics from Elastic Runtime in the JMX provider, verify that you installed Elastic Runtime prior to JMX Bridge. If JMX Bridge was installed first, perform the following steps:
 
 1. SSH into the `opentsdb-firehose-nozzle` VM. For information about how to use the BOSH CLI to SSH into a VM, see [Advanced Troubleshooting with the BOSH CLI](https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html).
@@ -42,7 +36,7 @@ If you are not seeing expected metrics from Elastic Runtime in the JMX provider,
 1. Restart the `opentsdb-firehose-nozzle` job. 
        <pre class="terminal">$ monit restart opentsdb-firehose-nozzle</pre>
        
-## <a id='bosh-metrics'></a>Missing Bosh Metrics ##
+### <a id='bosh-metrics'></a>Missing Bosh Metrics
 If you are not seeing expected metrics from Bosh, Try the following:
 
 1. Verify that the IP in `JMX Bridge` -> `Status` -> `JMX Provider` IP matches the value entered in
@@ -50,7 +44,7 @@ If you are not seeing expected metrics from Bosh, Try the following:
 1. If still no bosh metrics are coming through the system, 
    please contact <a href="https://support.pivotal.io/">Pivotal Support</a>
        
-## <a id='smoke-tests'></a>Smoke Tests ##
+### <a id='smoke-tests'></a>Smoke Tests
 
 If errors occur while the smoke tests run, they will be found in the `ChangeLog` for the installation.
 Some common failures are listed below.
@@ -102,3 +96,8 @@ Some common failures are listed below.
   <td>Restart the Firehose Nozzle VM</td>
 </tr>
 </table>
+
+## <a id='uninstall'></a>Uninstall
+
+See the [Deleting a Product](https://docs.pivotal.io/pivotalcf/customizing/add-delete.html#del-prod) section of the _Adding and Deleting Products_ topic for details.
+
