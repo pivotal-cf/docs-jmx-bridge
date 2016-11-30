@@ -10,11 +10,10 @@ owner: Metrix
 **Release Date: November 29, 2016**
 
 ### Release Notes
-* JMX Bridge v1.8.9 - Minimum Elastic Runtime version required to run the product has been raised to v1.8.17.
-    * Earlier versions of Elastic Runtime v1.8 had an issue with the `provides_product_version` property. This was corrected as of Elastic Runtime v1.8.17 and later. This necessitated an update to how JMX Bridge v1.8 handles this property. This will ensure JMX Bridge continues to work on later versions of Elastic Runtime v1.8 and future versions of Elastic Runtime v1.9. 
-    * **Please ensure you have upgraded your Elastic Runtime version to v1.8.17 or later before upgrading to PCF JMX Bridge v1.8.9 or later**.
-    * Note that JMX Bridge v1.8.2 through v1.8.8 will only work with Elastic Runtime v1.8.0 through v1.8.16. JMX Bridge v1.8.9 and later will only work with Elastic Runtime v1.8.17 and later. Deviations from this will result in a [dependency error](https://docs.pivotal.io/jmx-bridge/1-8/troubleshooting-uninstall-metrics.html#dependency) on install/upgrade.
-* Stemcell for v1.8.9 remains v3263
+* JMX Bridge v1.8.9 requires Elastic Runtime v1.8.17 or later. **Ensure that you upgrade to Elastic Runtime v1.8.17 or later before upgrading to PCF JMX Bridge v1.8.9 or later**.
+    * Earlier versions of Elastic Runtime v1.8 had an issue with the `provides_product_version` property. Elastic Runtime v1.8.17 and later correct this issue, which necessitated an update to how JMX Bridge v1.8 handles the property. The JMX Bridge update ensures that it continues to work on later versions of Elastic Runtime v1.8 and future versions of Elastic Runtime v1.9.  
+    * JMX Bridge v1.8.2 through v1.8.8 only work with Elastic Runtime v1.8.0 through v1.8.16. JMX Bridge v1.8.9 and later only work with Elastic Runtime v1.8.17 and later. Deviations from these compatibility rules result in a [dependency error](https://docs.pivotal.io/jmx-bridge/1-8/troubleshooting-uninstall-metrics.html#dependency) on install/upgrade.
+* The stemcell for v1.8.9 remains v3263.
 
 ### Known issues
 * None
