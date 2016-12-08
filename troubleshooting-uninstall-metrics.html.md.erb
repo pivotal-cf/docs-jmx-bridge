@@ -37,13 +37,13 @@ If you are not seeing expected metrics from Elastic Runtime in the JMX provider,
 1. Restart the `opentsdb-firehose-nozzle` job. 
        <pre class="terminal">$ monit restart opentsdb-firehose-nozzle</pre>
        
-## <a id='bosh-metrics'></a>Missing Bosh Metrics ##
-If you are not seeing expected metrics from Bosh, Try the following:
+## <a id='bosh-metrics'></a>Missing BOSH Metrics ##
+If you are not seeing expected metrics from BOSH, Try the following:
 
 1. Verify that the IP in `JMX Bridge` -> `Status` -> `JMX Provider` IP matches the value entered in
       `Ops Manager Director` -> `Director Config` -> `Metrics IP Address`
-1. If still no bosh metrics are coming through the system, 
-   please contact <a href="https://support.pivotal.io/">Pivotal Support</a>
+1. If no BOSH metrics are coming through the system, 
+   please contact <a href="https://support.pivotal.io/">Pivotal Support</a>.
        
 ## <a id='smoke-tests'></a>Smoke Tests ##
 
