@@ -6,6 +6,25 @@ owner: Metrix
 <p class="note"><strong>Note</strong>: Before v1.7.X, JMX Bridge was known as Ops Metrics. For Ops Metrics release notes and known issues, see <a href="https://docs.pivotal.io/pivotalcf/1-6/pcf-release-notes/p1-v1.6/opsmetrics_rn_1_6.html">Version 1.6.X</a>. </p>
 
 
+##<a id='v1.8.11'></a>Version 1.8.11
+**Release Date: December 15, 2016**
+
+### Release Notes
+* JMX Bridge v1.8.11 — **Enhancement**: A new optional feature to enable support of an External IP in a NAT'd customer environment has been added for operators within the tile config under JMX Provider
+    * Operators are able to set the NAT IP as the host IP, at which point the JMX Provider can be connected to at the specified IP
+    * This enhancement addresses usage of JMX Bridge in a NAT'd network, where the product provided endpoint would become unavailable. While a manual configuration was possible to overcome this, the manual change would not hold through subsequent environment updates 
+    * This feature is disabled by default. Once enabled, it will continue to persist through future updates until operator disabled    
+    * See [how to enable](https://docs.pivotal.io/jmx-bridge/1-8/deploy-metrics.html#config-nat)
+* Release also includes a maintenance update of the following product dependencies:
+    * SLF4J now v1.7.21
+    * Logback now v1.1.7
+    * Guava now v20.0
+    * Bouncy Castle bcprov-jdk15on now v1.55
+* The stemcell for v1.8.11 remains v3263.
+
+### Known issues
+* None
+
 ##<a id='v1.8.9'></a>Version 1.8.9
 **Release Date: November 29, 2016**
 
