@@ -5,15 +5,17 @@ owner: PCF Metrics
 
 <strong><%= modified_date %></strong>
 
-This topic describes how to resolve common issues with the JMX Bridge for Pivotal Cloud Foundry (PCF) tile, and how to uninstall the tile if necessary. 
+This topic describes how to resolve common issues with the JMX Bridge for Pivotal Cloud Foundry (PCF) tile 
+and how to uninstall the tile if necessary. 
 
 ## <a id="troubleshot"></a> Troubleshoot##
 
-See the following sections for help with troubleshooting JMX Bridge for PCF. 
+The following sections provide help with troubleshooting JMX Bridge for PCF. 
 
 ### <a id='dependency'></a>Dependency Error During Install###
 
-You may see the following error if your installed version of Elastic Runtime is not compatible with the version of JMX Bridge that you are attempting to install: 
+You might see the following error if your installed version of Elastic Runtime is not compatible with the version of JMX Bridge that you are attempting to install: 
+`JMX Bridge requires 'cf' version '~> 1.8.0.0' as a dependency.`
 
 <%= image_tag("images/jmx-ert-install-depedency.png") %>
 
@@ -21,7 +23,7 @@ Follow the instructions below that correspond to your installed Elastic Runtime 
 
 * **Elastic Runtime 1.8.0 to 1.8.16**: 
    1. Download version 1.8.17 or later of the <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime tile</a> and import it into your Ops Manager **Installation Dashboard**.
-   1. Click the newly added tile to review any configurable options. If you need guidance, refer to the <a href="https://docs.pivotal.io/pivotalcf/installing/index.html">Installing Pivotal Cloud Foundry</a> topic and choose your IaaS.
+   1. Click the newly added tile to review any configurable options. For more information, see the <a href="https://docs.pivotal.io/pivotalcf/installing/index.html">Installing Pivotal Cloud Foundry</a> topic and choose your IaaS.
    1. Click **Apply Changes** to install both Elastic Runtime and JMX Bridge.
 * **Elastic Runtime 1.8.17 or later**: Upgrade the JMX Bridge tile to 1.8.9 or later.  
   <p class="note"><strong>Note</strong>: A known issue exists with older versions of JMX Bridge and the newer versions of Elastic Runtime. JMX Bridge 1.8.2 through 1.8.8 only work with Elastic Runtime 1.8.0 through 1.8.16.</p>
@@ -43,7 +45,8 @@ You may see the following error if you have Elastic Runtime and JMX Bridge insta
    
 ### <a id='no-metrics'></a>Missing Metrics from PCF Installation or Firehose###
 
-If you do not see expected metrics from Elastic Runtime in the JMX provider, verify that you installed Elastic Runtime prior to JMX Bridge. If you installed JMX Bridge first, perform the following steps:
+If you do not see expected metrics from Elastic Runtime in the JMX provider, verify that you installed Elastic Runtime before JMX Bridge. 
+If you installed JMX Bridge first, perform the following steps:
 
 1. SSH into the **opentsdb-firehose-nozzle** VM. For information about how to use the BOSH CLI to SSH into a VM, see the [Advanced Troubleshooting with the BOSH CLI](https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html) topic.
 1. Grant **sudo** access to the machine:
@@ -112,5 +115,5 @@ If errors occur when the smoke tests run, you can find the errors in the **Chang
 
 ## <a id='uninstall'></a>Uninstall##
 
-See the [Deleting a Product](https://docs.pivotal.io/pivotalcf/customizing/add-delete.html#del-prod) section of the _Adding and Deleting Products_ topic for details.
+To uninstall the JMX Bridge for PCF tile, see the [Deleting a Product](https://docs.pivotal.io/pivotalcf/customizing/add-delete.html#del-prod) section of the _Adding and Deleting Products_ topic.
 

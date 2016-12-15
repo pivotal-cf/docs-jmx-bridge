@@ -48,7 +48,35 @@ Starting in 1.8.7, the JMX Bridge product enforces this install order dependency
 
 1. Record these credentials. You use these to connect JMX clients to the JMX Provider.
 
-## <a id='config-ssl'></a>(Optional) Step 4: Configure SSL ##
+## <a id='config-nat'></a>(Optional) Step 4: Enable NAT Support ##
+
+1. Select the **Enable** radio button.
+NAT support is disabled by default. This option allows you to set the NAT IP as the host IP. 
+By default, the internal IP address of the JMX Provider VM is set as the host IP.
+
+1. Enter the NAT IP as the External IP address in the form `0.0.0.0`
+
+    <%= image_tag("images/jmxbridge-enable-nat-support.png") %>
+    
+1. If you have enabled or disabled `NAT Support`, click **Save**.
+
+<p class="note"><strong>Note</strong>: To connect to the JMX Provider after install, you **must** use the specified
+IP. The IP displayed in the `Status` tab will always reflect the internal IP of the JMX Provider VM not the external IP.</p>
+
+
+## <a id='config-security-logging'></a>(Optional) Step 5: Disable or Enable Security Logging ##
+
+1. Select the **Enable Security Logging** checkbox.
+Access to the JMX endpoint is logged to STDOUT by default. 
+You can enable this security logging in the JMX Bridge tile configuration by selecting this checkbox, or disable it deselecting this checkbox. Security logging is enabled by default.
+
+    <%= image_tag("images/jmxbridge-enable-security-logging.png") %>
+    
+1. If you have enabled or disabled `Security Logging`, click **Save**.
+
+<p class="note"><strong>Note</strong>: Related log output is made available by initiating a JMX Provider logs download from the JMX Bridge tile configuration status tab, then  fetching the download from the logs tab.</p>
+
+## <a id='config-ssl'></a>(Optional) Step 6: Configure SSL ##
 
 1. Select the **Enable SSL** checkbox.
 Enabling SSL requires JMX clients to use SSL to connect to the JMX Provider.
@@ -75,19 +103,7 @@ credentials.
 
 1. After providing an SSL certificate and private key, click **Save**.
 
-## <a id='config-security-logging'></a>(Optional) Step 5: Disable or Enable Security Logging ##
-
-1. Select the **Enable Security Logging** checkbox.
-Access to the JMX endpoint is logged to STDOUT by default. 
-You can enable this security logging in the JMX Bridge tile configuration by selecting this checkbox, or disable it deselecting this checkbox. Security logging is enabled by default.
-
-    <%= image_tag("images/jmxbridge-enable-security-logging.png") %>
-    
-1. If you have enabled or disabled security logging, click **Save**.
-
-<p class="note"><strong>Note</strong>: Related log output is made available by initiating a JMX Provider logs download from the JMX Bridge tile configuration status tab, then  fetching the download from the logs tab.</p>
-
-## <a id='errands'></a>(Optional) Step 6: Configure Errands ##
+## <a id='errands'></a>(Optional) Step 7: Configure Errands ##
 
 <p>Errands are scripts that Ops Manager runs to automate tasks. 
 By default, Ops Manager runs the post-install errands listed below when you deploy PCF JMX Bridge. However, you can prevent a specific post-install errand from running by deselecting its checkbox on the Errands page.</p>
@@ -101,13 +117,13 @@ By default, Ops Manager runs the post-install errands listed below when you depl
 
 <p class="note"><strong>Note</strong>: If errors occur during the install due to smoke tests, refer to the <a href="./troubleshooting-uninstall-metrics.html#smoke-tests">troubleshooting documentation</a> for more information.</p>
 
-## <a id='resource-config'></a>(Optional) Step 7: Resource Configuration ##
+## <a id='resource-config'></a>(Optional) Step 8: Resource Configuration ##
 
 <p class="note"><strong>Note</strong>: In JMX Bridge 1.8.7, the Firehose Nozzle is enabled by default and requires <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> as a dependency.</p>
 
 To disable the Firehose Nozzle or stop receiving <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> (including Diego) metrics, modify the instance count of the **OpenTSDB Firehose Nozzle** from `1` to `0`. 
 
-## <a id='apply'></a>Step 8: Apply Changes ##
+## <a id='apply'></a>Step 9: Apply Changes ##
 
 1. Navigate to the PCF Ops Manager Installation Dashboard.
 
@@ -117,7 +133,7 @@ To disable the Firehose Nozzle or stop receiving <a href="https://network.pivota
 
 After installation completes, a message appears stating that the changes have been applied.
 
-## <a id='get-ip'></a>Step 9: Find the IP Address of the JMX Provider ##
+## <a id='get-ip'></a>Step 10: Find the IP Address of the JMX Provider ##
 
 1. Click **Return to Product Dashboard**.
 
@@ -128,7 +144,7 @@ After installation completes, a message appears stating that the changes have be
 1. Record the IP address of the **JMX Provider**.
 <p class="note"><strong>Note</strong>: After installation, your JMX client connects to this IP address at port 44444 using the credentials that you  supplied. Also ensure that TCP port 44445 is open.</p>
 
-## <a id='config-ip'></a>Step 10: Configure the Metrics IP Address ##
+## <a id='config-ip'></a>Step 11: Configure the Metrics IP Address ##
 
 1. Return to the **Installation Dashboard**.
 Click the **Ops Manager Director** tile and select **Director Config**.
@@ -139,7 +155,7 @@ Click the **Ops Manager Director** tile and select **Director Config**.
 Provider.
 Click **Save**.
 
-## <a id='complete'></a>Step 11: Complete Installation ##
+## <a id='complete'></a>Step 12: Complete Installation ##
 
 1. In the Pending Changes view, click **Apply Changes**.
 
