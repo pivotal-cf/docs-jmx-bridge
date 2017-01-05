@@ -6,6 +6,17 @@ owner: Metrix
 <p class="note"><strong>Note</strong>: Before v1.7.X, JMX Bridge was known as Ops Metrics. For Ops Metrics release notes and known issues, see <a href="https://docs.pivotal.io/pivotalcf/1-6/pcf-release-notes/p1-v1.6/opsmetrics_rn_1_6.html">Version 1.6.X</a>. </p>
 
 
+##<a id='v1.8.12'></a>Version 1.8.12
+**Release Date: January 5, 2017**
+
+### Release Notes
+* JMX Bridge v1.8.12 — This maintenance patch makes an improvement to how the firehose connection to the JMX provider is tested. The prior `SlowConsumer` metric was not a consistent enough indicator that the firehose nozzle may need to scale. This patch introduces a metric `opentsdb.nozzle.totalFirehoseDisconnects` that increments the number of JMX Bridge firehose disconnects and logs each disconnect to STDOUT. 
+    * This metric can be used to help indicate a need to scale the product firehose nozzle. When experiencing truncated or dropped messages, first restart the Firehose Nozzle VM and check logs to validate it is connected. If several disconnects are logged, you should increase the number of OpenTSDB Firehose Nozzle instances in the tile Resource Config. Firehose reconnect attempts will show a delay of 5 seconds between attempts in order to reduce the risk of excessive calls to UAA. For more info on troubleshooting the firehose connection, see [troubleshooting](https://docs.pivotal.io/jmx-bridge/1-8/troubleshooting-uninstall-metrics.html#no-metrics).
+* The stemcell for v1.8.12 remains v3263.
+
+### Known issues
+* None
+
 ##<a id='v1.8.11'></a>Version 1.8.11
 **Release Date: December 15, 2016**
 
