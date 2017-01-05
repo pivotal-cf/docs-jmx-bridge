@@ -73,27 +73,11 @@ If errors occur when the smoke tests run, you can find the errors in the **Chang
 </tr>
 <tr>
   <th>Cause</th>
-  <td>The Firehose Nozzle did not receive health metrics.</td>
+  <td>The JMX Provider did not receive internal health metrics from the OpenTSDB Firehose Nozzle.</td>
 </tr>
 <tr>
   <th>Solution</th>
-  <td>Restart the Firehose Nozzle VM.</td>
-</tr>
-</table>
-
-<table border='1' class='nice'>
-<tr>
-  <th width="22%">Error</th>
-  <td><code>slowConsumerAlertIsZero() Fails</code>
-  </td>
-</tr>
-<tr>
-  <th>Cause</th>
-  <td>The Firehose Nozzle cannot keep up with the load of the Firehose.</td>
-</tr>
-<tr>
-  <th>Solution</th>
-  <td>Scale up the number of Firehose Nozzles in <strong>Resource Config</strong>.</td>
+  <td>Restart the OpenTSDB Firehose Nozzle VM and check the logs to verify it is running correctly.</td>
 </tr>
 </table>
 
@@ -105,11 +89,15 @@ If errors occur when the smoke tests run, you can find the errors in the **Chang
 </tr>
 <tr>
   <th>Cause</th>
-  <td>The Firehose Nozzle is not receiving metrics from the Firehose.</td>
+  <td>The OpenTSDB Firehose Nozzle is not receiving metrics from the Firehose.</td>
 </tr>
 <tr>
   <th>Solution</th>
-  <td>Restart the Firehose Nozzle VM.</td>
+  <td>Restart the OpenTSDB Firehose Nozzle VM and check the logs to verify it is connected to the Firehose.  If you see a lot of reconnect attempts in the logs then you likely need to scale up the number of OpenTSDB Firehose Nozzle instances in the <b>Resource Config</b> tab.</td>
+ </tr>
+ </table>
+ 
+
 </tr>
 </table>
 
