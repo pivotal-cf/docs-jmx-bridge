@@ -48,11 +48,11 @@ You may see the following error if you have Elastic Runtime and JMX Bridge insta
 If you do not see expected metrics from Elastic Runtime in the JMX provider, verify that you installed Elastic Runtime before JMX Bridge. 
 If you installed JMX Bridge first, perform the following steps:
 
-1. SSH into the **opentsdb-firehose-nozzle** VM. For information about how to use the BOSH CLI to SSH into a VM, see the [Advanced Troubleshooting with the BOSH CLI](https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html) topic.
+1. SSH into the **jmx-firehose-nozzle** VM. For information about how to use the BOSH CLI to SSH into a VM, see the [Advanced Troubleshooting with the BOSH CLI](https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html) topic.
 1. Grant **sudo** access to the machine:
        <pre class="terminal">$ sudo -i</pre>
-1. Restart the `opentsdb-firehose-nozzle` job. 
-       <pre class="terminal">$ monit restart opentsdb-firehose-nozzle</pre>
+1. Restart the `jmx-firehose-nozzle` job. 
+       <pre class="terminal">$ monit restart jmx-firehose-nozzle</pre>
 
 ### <a id='bosh-metrics'></a>Missing BOSH Metrics###
 
@@ -73,11 +73,11 @@ If errors occur when the smoke tests run, you can find the errors in the **Chang
 </tr>
 <tr>
   <th>Cause</th>
-  <td>The JMX Provider did not receive internal health metrics from the OpenTSDB Firehose Nozzle.</td>
+  <td>The JMX Provider did not receive internal health metrics from the Firehose Nozzle.</td>
 </tr>
 <tr>
   <th>Solution</th>
-  <td>Restart the OpenTSDB Firehose Nozzle VM and check the logs to verify it is running correctly.</td>
+  <td>Restart the Firehose Nozzle VM and check the logs to verify it is running correctly.</td>
 </tr>
 </table>
 
@@ -89,11 +89,11 @@ If errors occur when the smoke tests run, you can find the errors in the **Chang
 </tr>
 <tr>
   <th>Cause</th>
-  <td>The OpenTSDB Firehose Nozzle is not receiving metrics from the Firehose.</td>
+  <td>The Firehose Nozzle is not receiving metrics from the Firehose.</td>
 </tr>
 <tr>
   <th>Solution</th>
-  <td>Restart the OpenTSDB Firehose Nozzle VM and check the logs to verify it is connected to the Firehose.  If you see a lot of reconnect attempts in the logs then you likely need to scale up the number of OpenTSDB Firehose Nozzle instances in the <b>Resource Config</b> tab.</td>
+  <td>Restart the Firehose Nozzle VM and check the logs to verify it is connected to the Firehose.  If you see a lot of reconnect attempts in the logs then you likely need to scale up the number of Firehose Nozzle instances in the <b>Resource Config</b> tab.</td>
 </tr>
 </table>
 
