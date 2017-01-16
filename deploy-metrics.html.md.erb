@@ -73,6 +73,7 @@ For readability, you can now remove the product specific `opentsdb.nozzle.` prep
     <%= image_tag("images/jmxbridge-enable-prefix.png") %>
     
 1. If you have enabled or disabled `Enable Nozzle Prefix`, click **Save**.
+Note that enabling or disabling this feature will cause temporary overlap of metrics coming through in both naming formats. Metrics with the former metric name format will continue to appear in the MBean tree until they age out (approximately 5 minutes).
 
 ## <a id='config-security-logging'></a>(Optional) Step 6: Disable or Enable Security Logging ##
 
