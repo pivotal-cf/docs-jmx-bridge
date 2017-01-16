@@ -67,8 +67,8 @@ IP address. The IP address displayed in the <code>Status</code> tab always refle
 
 1. Select the **Enable Nozzle Prefix** checkbox.
 The Nozzle Prefix is enabled by default.
-This will maintain the naming convention followed by Cloud Foundry components and prepend metrics with `opentsdb.nozzle.`
-For readability, you can remove `opentsdb.nozzle.` from metrics names that flow through the Firehose.
+This backwards compatability feature will maintain the naming convention followed by all prior versions of the JMX Bridge, and prepend firehose transmitted metrics with `opentsdb.nozzle.` to read `opentsdb.nozzle.<metric>`.
+For readability, you can now remove the product specific `opentsdb.nozzle.` prepend from firehose transmitted metrics names. 
 
     <%= image_tag("images/jmxbridge-enable-prefix.png") %>
     
