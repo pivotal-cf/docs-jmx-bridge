@@ -1,0 +1,57 @@
+---
+title: JMX Bridge&reg; for Pivotal Cloud Foundry Documentation
+owner: PCF Metrics
+---
+
+# Resource requirements
+The following table shows the default resource and IP requirements for installing the tile:
+<table border="1" class="nice">
+	<tr>
+		<th>Product</th>
+		<th>Resource</th>
+		<th>Instances</th>
+		<th>CPU</th>
+		<th>Ram</th>
+		<th>Ephemeral</th>
+		<th>Persistent</th>
+		<th>Static IP</th>
+		<th>Dynamic IP</th>
+	</tr>
+	<tr>
+ 		<td>JMX Bridge</td>
+	 	<td>JMX Provider</td>
+	 	<td>1</td>
+	 	<td>2</td>
+	 	<td>4GB</td>
+	 	<td>8GB</td>
+	 	<td>1GB</td>
+	 	<td>1</td>
+	 	<td>0</td>
+ 	</tr>
+ 	<tr>
+ 		<td>JMX Bridge</td>
+ 		<td>OpenTSDB Firehose Nozzle</td>
+ 		<td>1</td>
+ 		<td>2</td>
+ 		<td>4GB</td>
+ 		<td>8GB</td>
+ 		<td>1GB</td>
+ 		<td>1</td>
+ 		<td>0</td>
+ 	</tr>
+ 	<tr>
+ 		<td>JMX Bridge</td>
+ 		<td>Smoke Tests</td>
+ 		<td>1</td>
+ 		<td>4</td>
+ 		<td>4GB</td>
+ 		<td>8GB</td>
+ 		<td>0</td>
+ 		<td>1</td>
+ 		<td>0</td>
+ 	</tr>
+</table>
+
+#### Notes:
+* If you anticipate you will have a large volume of metrics coming via the Firehose 
+then scale the OpenTSDB Firehose Nozzle up accordingly.
