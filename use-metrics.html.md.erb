@@ -174,18 +174,6 @@ metric represents, and the metric type (data type).
   <th><strong>METRIC TYPE (DATA TYPE)</strong></th>
 </tr>
 <tr>
-  <td>system.mem.percent</td><td>Percentage of memory used on the VM</td><td>Gauge (Float, 0-100)</td>
-</tr>
-<tr>
-  <td>system.swap.percent</td><td>Percentage of swap used on the VM</td><td>Gauge (Float, 0-100)</td>
-</tr>
-<tr>
-  <td>system.disk.ephemeral.percent</td><td>Percentage of ephemeral disk used on the VM</td><td>Gauge (Float, 0-100)</td>
-</tr>
-<tr>
-  <td>system.disk.system.percent</td><td>Percentage of system disk used on the VM</td><td>Gauge (Float, 0-100)</td>
-</tr>
-<tr>
   <td>system.cpu.sys</td><td>Amount of CPU spent in system processes</td><td>Gauge (Float)</td>
 </tr>
 <tr>
@@ -193,5 +181,35 @@ metric represents, and the metric type (data type).
 </tr>
 <tr>
   <td>system.cpu.wait</td><td>Amount of CPU spent in waiting processes</td><td>Gauge (Float)</td>
+</tr>
+<tr>
+  <td>system.disk.ephemeral.percent</td><td>Percentage of ephemeral disk used on the VM</td><td>Gauge (Float, 0-100)</td>
+</tr>
+<tr>
+  <td>system.disk.ephemeral.inode.percent</td><td>The percentage of inodes consumed by the ephemeral disk</td><td>Gauge (Float, 0-100)</td>
+</tr>
+<tr>
+  <td>system.disk.persistent.percent</td><td>Percentage of persistent disk used on the VM</td><td>Gauge (Float, 0-100)</td>
+</tr>
+<tr>
+  <td>system.disk.persistent.inode.percent</td><td>The percentage of inodes consumed by the persistent disk</td><td>Gauge (Float, 0-100)</td>
+</tr>
+<tr>
+  <td>system.disk.system.percent</td><td>Percentage of system disk used on the VM</td><td>Gauge (Float, 0-100)</td>
+</tr>
+<tr>
+  <td>system.healthy</td><td>Indicates whether a VM system is healthy(1=healthy)</td><td>Gauge (Float, 0-1)</td>
+</tr>
+<tr>
+  <td>system.load.1m</td><td>Amount of load the system is under averaged over one minute</td><td>Gauge (Float)</td>
+</tr>
+<tr>
+  <td>system.mem.percent</td><td>Percentage of memory used on the VM</td><td>Gauge (Float)</td>
+</tr>
+<tr>
+  <td>system.swap.kb</td><td>Amount of swap used on the VM in KB</td><td>Gauge (Float)</td>
+</tr>
+<tr>
+  <td>system.swap.percent</td><td>Percentage of swap used on the VM</td><td>Gauge (Float, 0-100)</td>
 </tr>
 </table>
