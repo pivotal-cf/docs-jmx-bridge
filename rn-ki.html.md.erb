@@ -6,6 +6,16 @@ owner: Metrix
 <p class="note"><strong>Note</strong>: Before v1.7.X, JMX Bridge was known as Ops Metrics. For Ops Metrics release notes and known issues, see <a href="https://docs.pivotal.io/pivotalcf/1-6/pcf-release-notes/p1-v1.6/opsmetrics_rn_1_6.html">Version 1.6.X</a>. </p>
 
 
+##<a id='v1.8.14'></a>Version 1.8.14
+**Release Date: January 18, 2017**
+
+### Release Notes
+* JMX Bridge v1.8.14 — BUG FIX: Fixes the issue identified in earlier v1.8.x versions where the JMX Bridge smoke tests would show an SSL connection error when running with SSL enabled. 
+* The stemcell for v1.8.14 remains v3263.
+
+### Known issues
+* None
+
 ##<a id='v1.8.12'></a>Version 1.8.12
 **Release Date: January 5, 2017**
 
@@ -15,7 +25,7 @@ owner: Metrix
 * The stemcell for v1.8.12 remains v3263.
 
 ### Known issues
-* None
+* BUG IDENTIFIED: The integration tests will given an SSL connection error when running with SSL enabled. The resolution to this issue is to disable the smoke tests, or to upgrade to v1.8.14 which contains a fix to this bug.
 
 ##<a id='v1.8.11'></a>Version 1.8.11
 **Release Date: December 15, 2016**
@@ -34,7 +44,7 @@ owner: Metrix
 * The stemcell for v1.8.11 remains v3263.
 
 ### Known issues
-* None
+* BUG IDENTIFIED: The integration tests will given an SSL connection error when running with SSL enabled. The resolution to this issue is to disable the smoke tests, or to upgrade to v1.8.14 which contains a fix to this bug.
 
 ##<a id='v1.8.9'></a>Version 1.8.9
 **Release Date: November 29, 2016**
@@ -46,7 +56,7 @@ owner: Metrix
 * The stemcell for v1.8.9 remains v3263.
 
 ### Known issues
-* None
+* BUG IDENTIFIED: The integration tests will given an SSL connection error when running with SSL enabled. The resolution to this issue is to disable the smoke tests, or to upgrade to v1.8.14 which contains a fix to this bug.
 
 ##<a id='v1.8.8'></a>Version 1.8.8
 **Release Date: November 22, 2016**
@@ -56,6 +66,7 @@ owner: Metrix
 * Stemcell for v1.8.8 remains v3263
 
 ### Known issues
+* BUG IDENTIFIED: The integration tests will given an SSL connection error when running with SSL enabled. The resolution to this issue is to disable the smoke tests, or to upgrade to v1.8.14 which contains a fix to this bug.
 * JMX Bridge v1.8.2 through v1.8.8 will only work with Elastic Runtime v1.8.0 through v1.8.16
 
 ##<a id='v1.8.7'></a>Version 1.8.7
@@ -76,6 +87,7 @@ owner: Metrix
 
 ### Known issues
 * BUG IDENTIFIED: The integration tests will fail if the doppler instances are greater than 1. The resolution to this issue is to disable the smoke tests, or to upgrade to v1.8.8 which contains a fix to this bug.
+* BUG IDENTIFIED: The integration tests will given an SSL connection error when running with SSL enabled. The resolution to this issue is to disable the smoke tests, or to upgrade to v1.8.14 which contains a fix to this bug.
 * JMX Bridge v1.8.2 through v1.8.8 will only work with Elastic Runtime v1.8.0 through v1.8.16
 
 ##<a id='v1.8.6'></a>Version 1.8.6
