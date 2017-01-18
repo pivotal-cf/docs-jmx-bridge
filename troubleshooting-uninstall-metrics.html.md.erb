@@ -61,40 +61,6 @@ If you do not see expected metrics from BOSH, try the following steps:
 1. Make sure the IP address in **JMX Bridge > Status > JMX Provider** matches the value entered in **Ops Manager Director > Director Config > Metrics IP Address**.
 1. If the JMX Provider IP address matches the Metrics IP address and you see no BOSH metrics in the system, contact <a href="https://support.pivotal.io/">Pivotal Support</a> for more assistance.
  
-### <a id='mbeans'></a>Validating JMX Bridge MBeans###
-
-If you think metrics from JMX Bridge are missing from a 3rd party tooling integration, first try the following
-steps to quickly debug whether there is an issue with JMX Bridge or with the tooling:
-
-1. Verify [Java 6+](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html) is installed
-1. Run `jconsole`
-      <pre class="terminal">$ jconsole</pre>
-1. Select `Remote Process` and enter the IP of the `JMX Provider` VM with port `44444`
-1. Fill in the username and password for the `JMX Provider` that was entered during installation of JMX Bridge
-1. Click `Connect`:
-
-      <%= image_tag("images/jmx-jconsole-connnect.png") %>
-
-1. Allow `Insecure connection` if SSL was not enabled
-
-      <%= image_tag("images/jmx-jsonsole-insecure.png") %>
-
-1. You can now view all MBeans emitted by JMX Bridge
-
-      <%= image_tag("images/jmx-jconsole-mbeans.png") %>
-      
-<p class="note"><strong>Note</strong>: If you have enabled SSL, see instructions on the <a href="self-signed-ssl.html">Using SSL with a Self-Signed Certificate in JMX Bridge</a> page</p>
-
-##### Setup Port Forwarding for JMX
-
-If you are connecting to jconsole from a location different from the install location
-(for example, deployed on AWS or GCP), you will have to first setup port forwarding to access the mbeansa
-1. Set up port forwarding on one tab of your console and keep it open
-      <pre class="terminal">ssh -D 7777 username@pcf.domain.com -T</pre>
-1. Start `jconsole` in a new tab and setup the `socksProxyPort` to the forwarded port
-      <pre class="terminal">jconsole -J-DsocksProxyHost=localhost -J-DsocksProxyPort=7777</pre>
-1. Navigate jconsole as normal
-
 ### <a id='smoke-tests'></a>Smoke Tests###
 
 If errors occur when the smoke tests run, you can find the errors in the **ChangeLog** for the installation. Some common failures are listed below.
