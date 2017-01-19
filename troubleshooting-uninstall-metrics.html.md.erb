@@ -21,34 +21,34 @@ You might see the following error if your installed version of Elastic Runtime i
 
 Follow the instructions below that correspond to your installed Elastic Runtime version:
 
-* **Elastic Runtime 1.8.0 to 1.8.16**: 
-   1. Download version 1.8.17 or later of the <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime tile</a> and import it into your Ops Manager **Installation Dashboard**.
-   1. Click the newly added tile to review any configurable options. For more information, see the <a href="https://docs.pivotal.io/pivotalcf/installing/index.html">Installing Pivotal Cloud Foundry</a> topic and choose your IaaS.
+* **Elastic Runtime v1.8.0 to v1.8.16**: 
+   1. Download version v1.8.17 or later of the <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime tile</a> and import it into your Ops Manager **Installation Dashboard**.
+   1. Click the newly added tile to review any configurable options. For more information, see <a href="https://docs.pivotal.io/pivotalcf/installing/index.html">Installing Pivotal Cloud Foundry</a> and choose your IaaS.
    1. Click **Apply Changes** to install both Elastic Runtime and JMX Bridge.
-* **Elastic Runtime 1.8.17 or later**: Upgrade the JMX Bridge tile to 1.8.9 or later.  
-  <p class="note"><strong>Note</strong>: A known issue exists with older versions of JMX Bridge and the newer versions of Elastic Runtime. JMX Bridge 1.8.2 through 1.8.8 only work with Elastic Runtime 1.8.0 through 1.8.16.</p>
+* **Elastic Runtime v1.8.17 or later**: Upgrade the JMX Bridge tile to v1.8.9 or later.  
+  <p class="note"><strong>Note</strong>: A known issue exists with older versions of JMX Bridge and the newer versions of Elastic Runtime. JMX Bridge v1.8.2 through v1.8.8 only work with Elastic Runtime v1.8.0 through v1.8.16.</p>
 
 
 ### <a id='cyclical_dependency'></a>Cyclic Dependency Error During Install###
 
-You may see the following error if you have Elastic Runtime and JMX Bridge installed
+You might see the following error if you have Elastic Runtime and JMX Bridge installed.
 
 <%= image_tag("images/jmx-ert-cyclic-depedency.png") %>
 
-* **JMX Bridge 1.8.7 or later; Elastic Runtime 1.8**:
+* **JMX Bridge v1.8.7 or later; Elastic Runtime v1.8**:
    1. The Collector component is no longer compatible with JMX Bridge.
-   All metrics that were previously flowing through the Collector are now flowing through the Firehose in Elastic Runtime 1.8.
+   All metrics that were previously flowing through the Collector are now flowing through the Firehose in Elastic Runtime v1.8.
    1. Scale down the Collector in `Elastic Runtime > Resource Config` to `0`
-   1. Click **Apply Changes** and continue your JMX Bridge installation
+   1. Click **Apply Changes** and continue your JMX Bridge installation.
 
-<p class="note"><strong>Note</strong>: This is only an issue for <strong>Elastic Runtime 1.8</strong>. The Collector does not exist in Elastic Runtime 1.9.</p>
+<p class="note"><strong>Note</strong>: This is only an issue for <strong>Elastic Runtime v1.8</strong>. The Collector does not exist in Elastic Runtime v1.9.</p>
    
 ### <a id='no-metrics'></a>Missing Metrics from PCF Installation or Firehose###
 
 If you do not see expected metrics from Elastic Runtime in the JMX provider, verify that you installed Elastic Runtime before JMX Bridge. 
 If you installed JMX Bridge first, perform the following steps:
 
-1. SSH into the **opentsdb-firehose-nozzle** VM. For information about how to use the BOSH CLI to SSH into a VM, see the [Advanced Troubleshooting with the BOSH CLI](https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html) topic.
+1. SSH into the **opentsdb-firehose-nozzle** VM. For information about how to use the BOSH CLI to SSH into a VM, see [Advanced Troubleshooting with the BOSH CLI](https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html).
 1. Grant **sudo** access to the machine:
        <pre class="terminal">$ sudo -i</pre>
 1. Restart the `opentsdb-firehose-nozzle` job. 
@@ -59,41 +59,44 @@ If you installed JMX Bridge first, perform the following steps:
 If you do not see expected metrics from BOSH, try the following steps:
 
 1. Make sure the IP address in **JMX Bridge > Status > JMX Provider** matches the value entered in **Ops Manager Director > Director Config > Metrics IP Address**.
-1. If the JMX Provider IP address matches the Metrics IP address and you see no BOSH metrics in the system, contact <a href="https://support.pivotal.io/">Pivotal Support</a> for more assistance.
+1. If the JMX Provider IP address matches the Metrics IP address and you see no BOSH metrics in the system, contact <a href="https://support.pivotal.io/">Pivotal Support</a> for help.
  
 ### <a id='mbeans'></a>Validating JMX Bridge MBeans###
 
-If you do not see metrics from JMX Bridge in your 3rd party tooling integration as expected, first try the following
-steps to quickly debug whether there is an issue with the JMX Bridge product, or if the issue may be with the tooling intergration:
+If you do not see metrics from JMX Bridge in your third-party tooling integration as expected, first try the following
+steps to quickly debug whether there is an issue with the JMX Bridge product or if the issue is with the tooling integration:
 
-1. Verify [Java 6+](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html) is installed
-1. Run **jconsole**
+1. Verify [Java 6+](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html) is installed.
+1. Run `jconsole`:
       <pre class="terminal">$ jconsole</pre>
-1. Select **Remote Process** and enter the IP of the **JMX Provider** VM with port `44444`
-1. Fill in the username and password for the **JMX Provider** that was entered during installation of JMX Bridge
-1. Click **Connect**:
+1. Select **Remote Process** and enter the IP of the **JMX Provider** VM with port `44444`.
+1. Fill in the username and password for the **JMX Provider** that was entered during installation of JMX Bridge.
+1. Click **Connect**.
 
       <%= image_tag("images/jmx-jconsole-connnect.png") %>
 
-1. Allow **Insecure connection** if SSL was not enabled
+1. Allow **Insecure connection** if SSL was not enabled.
 
       <%= image_tag("images/jmx-jsonsole-insecure.png") %>
 
-1. You can now view all MBeans emitted by JMX Bridge
+You can now view all MBeans emitted by JMX Bridge.
 
-      <%= image_tag("images/jmx-jconsole-mbeans.png") %>
+<%= image_tag("images/jmx-jconsole-mbeans.png") %>
       
-<p class="note"><strong>Note</strong>: If you have enabled SSL, see instructions on the <a href="self-signed-ssl.html">Using SSL with a Self-Signed Certificate in JMX Bridge</a> page</p>
+<p class="note"><strong>Note</strong>: If you have enabled SSL, see <a href="self-signed-ssl.html">Using SSL with a Self-Signed Certificate in JMX Bridge</a>.</p>
 
-##### Setup Port Forwarding for JMX
+##### Set Up Port Forwarding for JMX
 
 If you are connecting to jconsole from a location different from the install location
-(for example, deployed on AWS or GCP), you will have to first setup port forwarding to access the MBeans
-1. Set up port forwarding on one tab of your console and keep it open
-      <pre class="terminal">ssh -D 7777 username@pcf.domain.com -T</pre>
-1. Start `jconsole` in a new tab and setup the `socksProxyPort` to the forwarded port
+(for example, deployed on AWS or GCP), you have to set up port forwarding to access the MBeans.
+
+1. Set up port forwarding on one tab of your console and keep it open:
+      <pre class="terminal">ssh -D 7777 username<span>@</span>pcf.domain.com -T</pre>
+
+1. Start `jconsole` in a new tab and set up the `socksProxyPort` to the forwarded port:
       <pre class="terminal">jconsole -J-DsocksProxyHost=localhost -J-DsocksProxyPort=7777</pre>
-1. Navigate jconsole as normal
+
+1. Navigate `jconsole` as normal.
 
 ### <a id='smoke-tests'></a>Smoke Tests###
 
@@ -137,5 +140,5 @@ If errors occur when the smoke tests run, you can find the errors in the **Chang
 
 ## <a id='uninstall'></a>Uninstall##
 
-To uninstall the JMX Bridge for PCF tile, see the [Deleting a Product](https://docs.pivotal.io/pivotalcf/customizing/add-delete.html#del-prod) section of the _Adding and Deleting Products_ topic.
+To uninstall the JMX Bridge for PCF tile, see [Deleting a Product](https://docs.pivotal.io/pivotalcf/customizing/add-delete.html#del-prod).
 
