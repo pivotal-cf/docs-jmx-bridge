@@ -63,8 +63,8 @@ If you do not see expected metrics from BOSH, try the following steps:
  
 ### <a id='mbeans'></a>Validating JMX Bridge MBeans###
 
-If you think metrics from JMX Bridge are missing from a 3rd party tooling integration, first try the following
-steps to quickly debug whether there is an issue with JMX Bridge or with the tooling:
+If you do not see metrics from JMX Bridge in your 3rd party tooling integration as expected, first try the following
+steps to quickly debug whether there is an issue with the JMX Bridge product, or if the issue may be with the tooling intergration:
 
 1. Verify [Java 6+](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html) is installed
 1. Run **jconsole**
@@ -88,7 +88,7 @@ steps to quickly debug whether there is an issue with JMX Bridge or with the too
 ##### Setup Port Forwarding for JMX
 
 If you are connecting to jconsole from a location different from the install location
-(for example, deployed on AWS or GCP), you will have to first setup port forwarding to access the mbeansa
+(for example, deployed on AWS or GCP), you will have to first setup port forwarding to access the MBeans
 1. Set up port forwarding on one tab of your console and keep it open
       <pre class="terminal">ssh -D 7777 username@pcf.domain.com -T</pre>
 1. Start `jconsole` in a new tab and setup the `socksProxyPort` to the forwarded port
