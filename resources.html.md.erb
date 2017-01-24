@@ -1,9 +1,9 @@
 ---
-title: JMX Bridge&reg; for Pivotal Cloud Foundry Documentation
+title: JMX Bridge Resources
 owner: PCF Metrics
 ---
 
-# Resource requirements
+##<a id="reqs"></a> Resource Requirements
 The following table shows the default resource and IP requirements for installing the tile:
 <table border="1" class="nice">
 	<tr>
@@ -11,7 +11,7 @@ The following table shows the default resource and IP requirements for installin
 		<th>Resource</th>
 		<th>Instances</th>
 		<th>CPU</th>
-		<th>Ram</th>
+		<th>RAM</th>
 		<th>Ephemeral</th>
 		<th>Persistent</th>
 		<th>Static IP</th>
@@ -52,6 +52,6 @@ The following table shows the default resource and IP requirements for installin
  	</tr>
 </table>
 
-#### Notes:
-* If you anticipate you will have a large volume of metrics coming via the Firehose 
-then scale the OpenTSDB Firehose Nozzle up accordingly.
+## <a id="guidelines"></a>Guidelines
+* If you anticipate a large volume of metrics coming from the Firehose,
+then scale up the OpenTSDB Firehose Nozzle accordingly.
