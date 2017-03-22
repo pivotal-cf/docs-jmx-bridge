@@ -13,6 +13,7 @@ owner: Metrix
 * Maintenance update of the following product dependencies:
     * Updates the OpenJDK version used in the product to v1.8.0.121
     * Updates the golang version used in the product to v1.8
+* The stemcell for v1.8.18 remains v3263
 
 ### Known issues
 * None
@@ -22,7 +23,7 @@ owner: Metrix
 
 ### Release Notes
 * JMX Bridge v1.8.14 — BUG FIX: Fixes the issue identified in earlier v1.8.x versions where the JMX Bridge smoke tests would show an SSL connection error when running with SSL enabled. 
-* The stemcell for v1.8.14 remains v3263.
+* The stemcell for v1.8.14 remains v3263
 
 ### Known issues
 * None
@@ -33,7 +34,7 @@ owner: Metrix
 ### Release Notes
 * JMX Bridge v1.8.12 — This maintenance patch makes an improvement to how the firehose connection to the JMX provider is tested. The prior `SlowConsumer` metric was not a consistent enough indicator that the firehose nozzle may need to scale. This patch introduces a metric `opentsdb.nozzle.totalFirehoseDisconnects` that increments the number of JMX Bridge firehose disconnects and logs each disconnect to STDOUT. 
     * This metric can be used to help indicate a need to scale the product firehose nozzle. When experiencing truncated or dropped messages, first restart the Firehose Nozzle VM and check logs to validate it is connected. If several disconnects are logged, you should increase the number of OpenTSDB Firehose Nozzle instances in the tile Resource Config. Firehose reconnect attempts will show a delay of 5 seconds between attempts in order to reduce the risk of excessive calls to UAA. For more info on troubleshooting the firehose connection, see [troubleshooting](https://docs.pivotal.io/jmx-bridge/1-8/troubleshooting-uninstall-metrics.html#no-metrics).
-* The stemcell for v1.8.12 remains v3263.
+* The stemcell for v1.8.12 remains v3263
 
 ### Known issues
 * BUG IDENTIFIED: The integration tests will given an SSL connection error when running with SSL enabled. The resolution to this issue is to disable the smoke tests, or to upgrade to v1.8.14 which contains a fix to this bug.
@@ -52,7 +53,7 @@ owner: Metrix
     * Logback now v1.1.7
     * Guava now v20.0
     * Bouncy Castle bcprov-jdk15on now v1.55
-* The stemcell for v1.8.11 remains v3263.
+* The stemcell for v1.8.11 remains v3263
 
 ### Known issues
 * BUG IDENTIFIED: The integration tests will given an SSL connection error when running with SSL enabled. The resolution to this issue is to disable the smoke tests, or to upgrade to v1.8.14 which contains a fix to this bug.
@@ -64,7 +65,7 @@ owner: Metrix
 * JMX Bridge v1.8.9 — Earlier versions of Elastic Runtime v1.8 had an issue with the `provides_product_version` property. Elastic Runtime v1.8.17 and later correct this issue, which necessitated an update to how JMX Bridge v1.8 handles the property. 
     * We recommend you upgrade to Elastic Runtime 1.8.17 or later, however JMX Bridge v1.8.9 can support Elastic Runtime v1.8.0 or later 
     * Earlier versions of JMX Bridge (v1.8.2 through v1.8.8) will now only work with Elastic Runtime v1.8.0 through v1.8.16. 
-* The stemcell for v1.8.9 remains v3263.
+* The stemcell for v1.8.9 remains v3263
 
 ### Known issues
 * BUG IDENTIFIED: The integration tests will given an SSL connection error when running with SSL enabled. The resolution to this issue is to disable the smoke tests, or to upgrade to v1.8.14 which contains a fix to this bug.
