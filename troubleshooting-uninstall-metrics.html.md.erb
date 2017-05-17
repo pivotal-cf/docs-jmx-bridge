@@ -17,7 +17,7 @@ The following sections provide help with troubleshooting JMX Bridge for PCF.
 You might see the following error if your installed version of Elastic Runtime is not compatible with the version of JMX Bridge that you are attempting to install: 
 `JMX Bridge requires 'cf' version '~> 1.8.0.0' as a dependency.`
 
-<%= image_tag("images/jmx-ert-install-depedency.png") %>
+<%= image_tag("images/troubleshooting/ert-install-depedency.png") %>
 
 Follow the instructions below that correspond to your installed Elastic Runtime version:
 
@@ -33,7 +33,7 @@ Follow the instructions below that correspond to your installed Elastic Runtime 
 
 You might see the following error if you have Elastic Runtime and JMX Bridge installed.
 
-<%= image_tag("images/jmx-ert-cyclic-depedency.png") %>
+<%= image_tag("images/troubleshooting/ert-cyclic-depedency.png") %>
 
 * **JMX Bridge v1.8.7 or later; Elastic Runtime v1.8**:
    1. The Collector component is no longer compatible with JMX Bridge.
@@ -73,15 +73,15 @@ steps to quickly debug whether there is an issue with the JMX Bridge product or 
 1. Fill in the username and password for the **JMX Provider** that was entered during installation of JMX Bridge.
 1. Click **Connect**.
 
-      <%= image_tag("images/jmx-jconsole-connnect.png") %>
+      <%= image_tag("images/troubleshooting/jconsole-connnect.png") %>
 
 1. Allow **Insecure connection** if SSL was not enabled.
 
-      <%= image_tag("images/jmx-jsonsole-insecure.png") %>
+      <%= image_tag("images/troubleshooting/jsonsole-insecure.png") %>
 
 You can now view all MBeans emitted by JMX Bridge.
 
-<%= image_tag("images/jmx-jconsole-mbeans.png") %>
+<%= image_tag("images/troubleshooting/jconsole-mbeans.png") %>
       
 <p class="note"><strong>Note</strong>: If you have enabled SSL, see <a href="self-signed-ssl.html">Using SSL with a Self-Signed Certificate in JMX Bridge</a>.</p>
 
