@@ -18,7 +18,7 @@ Starting in 1.8.7, the JMX Bridge product enforces this install order dependency
 
 1. On the Installation Dashboard, click the **JMX Bridge** tile.
 
-    <%= image_tag("images/metrics-tile.png") %>
+    <%= image_tag("images/deploying/tile.png") %>
 
     The orange bar on the **JMX Bridge** tile indicates that the
     product requires configuration.
@@ -31,14 +31,14 @@ Starting in 1.8.7, the JMX Bridge product enforces this install order dependency
 
 1. (**vSphere and Amazon Web Services Only**) Select one or more Availability Zones under **Balance other jobs in**. Ops Manager balances instances of Metrics jobs with more than one instance across the Availability Zones that you specify.
 
-    <%= image_tag("images/assign-az.png") %>
+    <%= image_tag("images/deploying/assign-az.png") %>
 
 1. Select a Network from the drop down menu.
     <p class='note'><strong>Note</strong>: JMX Bridge uses the default Assigned Network if you do not select a different network.</p>
 
 1. Click **Save**.
   <p class="note"><strong>Note</strong>: When you save this form, the following verification error displays because the PCF security group blocks ICMP. You can ignore this error.</p>
-    <%= image_tag("images/er-network-error.png") %>
+    <%= image_tag("images/deploying/er-network-error.png") %>
 
 ## <a id='config-jmx-provider'></a>Step 3: Configure JMX Provider ##
 
@@ -56,7 +56,7 @@ By default, the internal IP address of the JMX Provider VM is set as the host IP
 
 1. Enter the NAT IP as the External IP address in the form `0.0.0.0`
 
-    <%= image_tag("images/jmxbridge-enable-nat-support.png") %>
+    <%= image_tag("images/deploying/enable-nat-support.png") %>
     
 1. If you have enabled or disabled `NAT Support`, click **Save**.
 
@@ -70,7 +70,7 @@ IP address. The IP address displayed in the <code>Status</code> tab always refle
 Access to the JMX endpoint is logged to STDOUT by default. 
 You can enable this security logging in the JMX Bridge tile configuration by selecting this checkbox, or disable it deselecting this checkbox. Security logging is enabled by default.
 
-    <%= image_tag("images/jmxbridge-enable-security-logging.png") %>
+    <%= image_tag("images/deploying/enable-security-logging.png") %>
     
 1. If you have enabled or disabled `Security Logging`, click **Save**.
 
@@ -83,7 +83,7 @@ Enabling SSL requires JMX clients to use SSL to connect to the JMX Provider.
 If SSL is not enabled, JMX clients can connect to the JMX Provider without SSL
 credentials.
 
-    <%= image_tag("images/ops-metrics-jmx-ssl.png") %>
+    <%= image_tag("images/deploying/enable-jmx-ssl.png") %>
 
     If you select the **Enable SSL** checkbox, you must also provide an SSL
 	certificate and private key.
@@ -99,7 +99,7 @@ credentials.
 
         For more information, see [Using SSL with a Self-Signed Certificate](./self-signed-ssl.html).
 
-    <%= image_tag("images/ops-metrics-jmx-cert.png") %>
+    <%= image_tag("images/deploying/external-ssl-cert.png") %>
 
 1. After providing an SSL certificate and private key, click **Save**.
 
@@ -108,7 +108,7 @@ credentials.
 <p>Errands are scripts that Ops Manager runs to automate tasks. 
 By default, Ops Manager runs the post-install errands listed below when you deploy PCF JMX Bridge. However, you can prevent a specific post-install errand from running by deselecting its checkbox on the Errands page.</p>
 
-  <%= image_tag("images/jmx-errands.png") %>
+  <%= image_tag("images/deploying/errands.png") %>
     
 * Select **Smoke tests for JMX Bridge** to cause the JMX Bridge to verify the following: 
   * If the Firehose Nozzle is enabled, that the Nozzle is receiving metrics
@@ -129,7 +129,7 @@ To disable the Firehose Nozzle or stop receiving <a href="https://network.pivota
 
 1. In the Pending Changes view, click **Apply Changes** to install JMX Bridge.
 
-    <%= image_tag("images/ops-metrics-pending-changes.png") %>
+    <%= image_tag("images/deploying/pending-changes.png") %>
 
 After installation completes, a message appears stating that the changes have been applied.
 
@@ -139,7 +139,7 @@ After installation completes, a message appears stating that the changes have be
 
 1. Click the **JMX Bridge** tile and select the **Status** tab.
 
-    <%= image_tag("images/ops-metrics-jmx-ips.png") %>
+    <%= image_tag("images/deploying/jmx-provider-ip.png") %>
 
 1. Record the IP address of the **JMX Provider**.
 <p class="note"><strong>Note</strong>: After installation, your JMX client connects to this IP address at port 44444 using the credentials that you  supplied. Also ensure that TCP port 44445 is open.</p>
@@ -149,9 +149,9 @@ After installation completes, a message appears stating that the changes have be
 1. Return to the **Installation Dashboard**.
 Click the **Ops Manager Director** tile and select **Director Config**.
 
-    <%= image_tag("images/ops-metrics-director-ip.png") %>
+    <%= image_tag("images/deploying/ops-manager-director-ip.png") %>
 
-1. In the **Metrics IP Address** field, enter the IP address of the JMX
+1. In the **JMX Provider IP Address** field, enter the IP address of the JMX
 Provider.
 Click **Save**.
 
@@ -159,7 +159,7 @@ Click **Save**.
 
 1. In the Pending Changes view, click **Apply Changes**.
 
-    <%= image_tag("images/ops-metrics-pending-changes.png") %>
+    <%= image_tag("images/deploying/pending-changes.png") %>
     When complete, a message appears stating that the changes have been applied.
 <br>
 1. Click **Return to Product Dashboard**.  JMX Bridge is now installed and configured.
