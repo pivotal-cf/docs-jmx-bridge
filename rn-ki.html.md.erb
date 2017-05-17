@@ -3,173 +3,29 @@ title: Release Notes and Known Issues
 owner: Metrix
 ---
 
-<p class="note"><strong>Note</strong>: Before v1.7.X, JMX Bridge was known as Ops Metrics. For Ops Metrics release notes and known issues, see <a href="https://docs.pivotal.io/pivotalcf/1-6/pcf-release-notes/p1-v1.6/opsmetrics_rn_1_6.html">Version 1.6.X</a>. </p>
-
-
-##<a id='v1.8.18'></a>Version 1.8.18
-**Release Date: March 09, 2017**
-
-### Release Notes
-* Maintenance update of the following product dependencies:
-    * Updates the OpenJDK version used in the product to v1.8.0.121
-    * Updates the golang version used in the product to v1.8
-* The stemcell for v1.8.18 remains v3263
-
-### Known issues
-* None
-
-##<a id='v1.8.14'></a>Version 1.8.14
-**Release Date: January 18, 2017**
-
-### Release Notes
-* JMX Bridge v1.8.14 — BUG FIX: Fixes the issue identified in earlier v1.8.x versions where the JMX Bridge smoke tests would show an SSL connection error when running with SSL enabled. 
-* The stemcell for v1.8.14 remains v3263
-
-### Known issues
-* None
-
-##<a id='v1.8.12'></a>Version 1.8.12
-**Release Date: January 5, 2017**
-
-### Release Notes
-* JMX Bridge v1.8.12 — This maintenance patch makes an improvement to how the firehose connection to the JMX provider is tested. The prior `SlowConsumer` metric was not a consistent enough indicator that the firehose nozzle may need to scale. This patch introduces a metric `opentsdb.nozzle.totalFirehoseDisconnects` that increments the number of JMX Bridge firehose disconnects and logs each disconnect to STDOUT. 
-    * This metric can be used to help indicate a need to scale the product firehose nozzle. When experiencing truncated or dropped messages, first restart the Firehose Nozzle VM and check logs to validate it is connected. If several disconnects are logged, you should increase the number of OpenTSDB Firehose Nozzle instances in the tile Resource Config. Firehose reconnect attempts will show a delay of 5 seconds between attempts in order to reduce the risk of excessive calls to UAA. For more info on troubleshooting the firehose connection, see [troubleshooting](https://docs.pivotal.io/jmx-bridge/1-8/troubleshooting-uninstall-metrics.html#no-metrics).
-* The stemcell for v1.8.12 remains v3263
-
-### Known issues
-* BUG IDENTIFIED: The integration tests will given an SSL connection error when running with SSL enabled. The resolution to this issue is to disable the smoke tests, or to upgrade to v1.8.14 which contains a fix to this bug.
-
-##<a id='v1.8.11'></a>Version 1.8.11
-**Release Date: December 15, 2016**
-
-### Release Notes
-* JMX Bridge v1.8.11 — **Enhancement**: A new optional feature to enable support of an External IP in a NAT'd customer environment has been added for operators within the tile config under JMX Provider
-    * Operators are able to set the NAT IP as the host IP, at which point the JMX Provider can be connected to at the specified IP
-    * This enhancement addresses usage of JMX Bridge in a NAT'd network, where the product provided endpoint would become unavailable. While a manual configuration was possible to overcome this, the manual change would not hold through subsequent environment updates 
-    * This feature is disabled by default. Once enabled, it will continue to persist through future updates until operator disabled    
-    * See [how to enable](https://docs.pivotal.io/jmx-bridge/1-8/deploy-metrics.html#config-nat)
-* Release also includes a maintenance update of the following product dependencies:
-    * SLF4J now v1.7.21
-    * Logback now v1.1.7
-    * Guava now v20.0
-    * Bouncy Castle bcprov-jdk15on now v1.55
-* The stemcell for v1.8.11 remains v3263
-
-### Known issues
-* BUG IDENTIFIED: The integration tests will given an SSL connection error when running with SSL enabled. The resolution to this issue is to disable the smoke tests, or to upgrade to v1.8.14 which contains a fix to this bug.
-
-##<a id='v1.8.9'></a>Version 1.8.9
-**Release Date: November 29, 2016**
-
-### Release Notes
-* JMX Bridge v1.8.9 — Earlier versions of Elastic Runtime v1.8 had an issue with the `provides_product_version` property. Elastic Runtime v1.8.17 and later correct this issue, which necessitated an update to how JMX Bridge v1.8 handles the property. 
-    * We recommend you upgrade to Elastic Runtime 1.8.17 or later, however JMX Bridge v1.8.9 can support Elastic Runtime v1.8.0 or later 
-    * Earlier versions of JMX Bridge (v1.8.2 through v1.8.8) will now only work with Elastic Runtime v1.8.0 through v1.8.16. 
-* The stemcell for v1.8.9 remains v3263
-
-### Known issues
-* BUG IDENTIFIED: The integration tests will given an SSL connection error when running with SSL enabled. The resolution to this issue is to disable the smoke tests, or to upgrade to v1.8.14 which contains a fix to this bug.
-
-##<a id='v1.8.8'></a>Version 1.8.8
-**Release Date: November 22, 2016**
-
-### Release Notes
-* JMX Bridge v1.8.8 — BUG FIX: Fixes the issue identified in v1.8.7 where the new integration tests would fail if the doppler instances were greater than 1. As of this version, the integration tests now correctly handle multiple doppler instances.
-* Stemcell for v1.8.8 remains v3263
-
-### Known issues
-* BUG IDENTIFIED: The integration tests will given an SSL connection error when running with SSL enabled. The resolution to this issue is to disable the smoke tests, or to upgrade to v1.8.14 which contains a fix to this bug.
-* JMX Bridge v1.8.2 through v1.8.8 will only work with Elastic Runtime v1.8.0 through v1.8.16
-
-##<a id='v1.8.7'></a>Version 1.8.7
-**Release Date: November 10, 2016**
-
-### Release Notes
-* JMX Bridge v1.8.7 - Now enforces the dependency stated in the product documentation to install <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> before installing JMX Bridge
-    * Enforcing the correct installation order ensures a good connection between JMX Bridge and the firehose
-    * If installation of JMX Bridge is attempted before Elastic Runtime, the user will now receive an installation error stating the required dependency  
-* **Enhancement**: The firehose nozzle is now enabled by default on installation
-    * This enhancement addresses common feedback that the majority of use cases require the firehose to be enabled, and therefore eliminating the nozzle enablement step speeds product installation 
-    * For product use cases that do not include firehose nozzle usage, the OpenTSDB nozzle may still be disabled
-    * OpenTSDB nozzle enabled/disabled preference will continue to be retained through future upgrades
-* **Enhancement**: The tile now includes Smoke Tests which are executed via errand upon installation/upgrade
-    * Any errors resulting from the smoke tests will be summarized at the end of the log output, and can be referenced against the product <a href="https://docs.pivotal.io/jmx-bridge/1-8/troubleshooting-uninstall-metrics.html">troubleshooting</a> documentation
-* Updates the OpenJDK version to v1.8.0.111
-* Stemcell for v1.8.7 remains v3263
-
-### Known issues
-* BUG IDENTIFIED: The integration tests will fail if the doppler instances are greater than 1. The resolution to this issue is to disable the smoke tests, or to upgrade to v1.8.8 which contains a fix to this bug.
-* BUG IDENTIFIED: The integration tests will given an SSL connection error when running with SSL enabled. The resolution to this issue is to disable the smoke tests, or to upgrade to v1.8.14 which contains a fix to this bug.
-* JMX Bridge v1.8.2 through v1.8.8 will only work with Elastic Runtime v1.8.0 through v1.8.16
-
-##<a id='v1.8.6'></a>Version 1.8.6
-**Release Date: October 11, 2016**
-
-### Release Notes
-* JMX Bridge v1.8.6 — BUG FIX: As of PCF v1.8, the firehose began to send the dropsonde envelope index as a GUID instead of an integer. 
-The OpenTSDB nozzle, if enabled, continued to assume parsing by integer causing some null values to be output. As of v1.8.6, the OpenTSDB nozzle now correctly parses the index field as a GUID.
-* Stemcell for v1.8.6 remains v3263
-
-### Known issues
-* There is nothing that prevents the user from turning on the Nozzle deployment when Elastic Runtime is not present.
-  * Enabling the nozzle when Elastic Runtime is not deployed or enabled will produce the following error:
-  * "RuntimeError — unknown product 'cf' in (( ..cf.cloud\_controller.system_domain.value ))"
-  * To fix this, reduce the number of nozzle counts to zero until Elastic Runtime is enabled.
-* Because deploying the OpenTSDB firehose nozzle is optional and disabled by default, smoke tests for Elastic Runtime have been disabled until a later release.
-* JMX Bridge v1.8.2 through v1.8.8 will only work with Elastic Runtime v1.8.0 through v1.8.16
-
-##<a id='v1.8.4'></a>Version 1.8.4
-**Release Date: September 22, 2016**
-
-### Release Notes
-* JMX Bridge v1.8.4 — now with stemcell v3263
-
-### Known issues
-* BUG IDENTIFIED: Prior versions of JMX v1.8.x before v1.8.6 did not properly account for a Firehose change (appearing as of PCF v1.8), where the Firehose (aka Loggregator) began to send the dropsonde envelope index as a GUID instead of an integer. When enabled, the OpenTSDB nozzle parsed the index field as an integer, causing parsing failure. As of JMX v1.8.6 and later, this OpenTSDB parsing now assumes GUID instead of integer. 
-* There is nothing that prevents the user from turning on the Nozzle deployment when Elastic Runtime is not present.
-  * Enabling the nozzle when Elastic Runtime is not deployed or enabled will produce the following error:
-  * "RuntimeError — unknown product 'cf' in (( ..cf.cloud\_controller.system_domain.value ))"
-  * To fix this, reduce the number of nozzle counts to zero until Elastic Runtime is enabled.
-* Because deploying the OpenTSDB firehose nozzle is optional and disabled by default, smoke tests for Elastic Runtime have been disabled until a later release.
-* JMX Bridge v1.8.2 through v1.8.8 will only work with Elastic Runtime v1.8.0 through v1.8.16
-
-##<a id='v1.8.3'></a>Version 1.8.3
-**Release Date: September 20, 2016**
+##<a id='v1.9.0'></a>Version 1.9.0
+**Release Date: June 15, 2017**
 
 ### Major Features
-* Access to the JMX endpoint is now logged to STDOUT by default. This security logging can be enabled/disabled in the JMX Bridge tile configuration by checking/unchecking "Enable Security Logging" under JMX Provider.
-  *  Related log output is made available by initiating a JMX Provider logs download from the JMX Bridge tile configuration status tab, then fetching the download from the logs tab. 
+* JMX Bridge v1.9 contains two major architecture changes in support of overall security improvements. No breaking changes in the metrics output or format have been introduced in this effort, so consumption of both BOSH and platform metrics should continue to be seamless for end-users upon upgrading from JMX Bridge v1.8 to JMX Bridge v1.9
+    * The former firehose consumer, `opentsdb-firehose-nozzle`, has been updated to a new, gRPC nozzle `jmx-firehose-nozzle`
+    * BOSH metric data now flows from Ops Manager to JMX Bridge via the new `jmx-bosh-plugin`. The related installation field in Ops Manager has been renamed from “Metrics IP” to “JMX Provider IP Address”, and it automatically configures the new plugin. Ops Manager will migrate IP entries in the “Metrics IP” field to the “JMX Provider IP Address” field upon upgrade from PCF v1.10 to PCF v1.11
+* New optional configuration to “Disable or Enable the Nozzle Prefix”; enabled by default
+    * The behavior of the JMX Bridge to prepend `opentsdb.nozzle` onto all non-BOSH firehose-transmitted metrics outputted was an artifact of the prior firehose nozzle. As this was replaced, this artifact was also eliminated. In order to avoid breaking changes to consumers of prior JMX Bridge versions, a new optional feature, enabled by default, was created to continue to prepend this `opentsdb.nozzle` value onto metrics previously outputted with it 
+    * If you do not require backward compatibility, you can make the metrics more readable by clearing the **Enable Nozzle Prefix** checkbox. This omits the `opentsdb.nozzle` prefix, transmitting the metric values in their pcf-emitted name format. 
+    * This backwards-compatibility feature may be deprecated in future versions of JMX Bridge. It is strongly recommended that consumer name mappings be updated when possible, and this feature to prepend `opentsdb.nozzle` then disabled.
+* Support for Firehose transmission of tagged metrics
+    * The firehose is capable of transmitting metrics with tags. While few emitted platform metrics are currently using this capability, for those that are, JMX Bridge v1.9 will pass the tag data along in the same format as seen when using `cf nozzle`
+    * An example of a tagged metric is `DopplerServer.listeners.receivedEnvelopes`. When viewing this metric via JMX Bridge or `cf nozzle` the transmitted format is `DopplerServer.listeners.receivedEnvelopes[event_type=ContainerMetric,protocol=grpc]`
 
 ### Release Notes
-* JMX Bridge v1.8.3 — BUG FIX: Corrects issue in v1.8.2 where the new security logging feature was not available to the operator in the tile config.
-* Stemcell for v1.8.3 remains v3262
+* JMX Bridge v1.9.0 is targeted for PCF v1.11.X
+    * JMX Bridge users upgrading to PCF v1.11, must also upgrade to JMX Bridge v1.9 due to a architecture-driven dependency between Ops Manager v1.11 and JMX Bridge v1.9
+* Stemcell for v1.9.0 is v3363
 
 ### Known issues
-* BUG IDENTIFIED: Prior versions of JMX v1.8.x before v1.8.6 did not properly account for a Firehose change (appearing as of PCF v1.8), where the Firehose (aka Loggregator) began to send the dropsonde envelope index as a GUID instead of an integer. When enabled, the OpenTSDB nozzle parsed the index field as an integer, causing parsing failure. As of JMX v1.8.6 and later, this OpenTSDB parsing now assumes GUID instead of integer. 
-* There is nothing that prevents the user from turning on the Nozzle deployment when Elastic Runtime is not present.
-  * Enabling the nozzle when Elastic Runtime is not deployed or enabled will produce the following error:
-  * "RuntimeError — unknown product 'cf' in (( ..cf.cloud\_controller.system_domain.value ))"
-  * To fix this, reduce the number of nozzle counts to zero until Elastic Runtime is enabled.
-* Because deploying the OpenTSDB firehose nozzle is optional and disabled by default, smoke tests for Elastic Runtime have been disabled until a later release.
-* JMX Bridge v1.8.2 through v1.8.8 will only work with Elastic Runtime v1.8.0 through v1.8.16
+* None
 
-##<a id='v1.8.2'></a>Version 1.8.2
-**Release Date: September 16, 2016**
-
-### Release Notes
-* JMX Bridge v1.8.2 is targeted for PCF v1.8.X
-* Stemcell for v1.8.2 is v3262
-
-### Known issues
-* BUG IDENTIFIED: The new security logging feature expected in JMX Bridge v1.8.X was not available to the operator in the tile config in version v1.8.2. JMX Bridge v1.8.3 corrects this.
-* BUG IDENTIFIED: Prior versions of JMX v1.8.x before v1.8.6 did not properly account for a Firehose change (appearing as of PCF v1.8), where the Firehose (aka Loggregator) began to send the dropsonde envelope index as a GUID instead of an integer. When enabled, the OpenTSDB nozzle parsed the index field as an integer, causing parsing failure. As of JMX v1.8.6 and later, this OpenTSDB parsing now assumes GUID instead of integer. 
-* There is nothing that prevents the user from turning on the Nozzle deployment when Elastic Runtime is not present.
-  * Enabling the nozzle when Elastic Runtime is not deployed or enabled will produce the following error:
-  * "RuntimeError — unknown product 'cf' in (( ..cf.cloud\_controller.system_domain.value ))"
-  * To fix this, reduce the number of nozzle counts to zero until Elastic Runtime is enabled.
-* Because deploying the OpenTSDB firehose nozzle is optional and disabled by default, smoke tests for Elastic Runtime have been disabled until a later release.
-* JMX Bridge v1.8.2 through v1.8.8 will only work with Elastic Runtime v1.8.0 through v1.8.16
-
-## <a id='minor1-7'></a>Past Minor Version 1.7.X
-Release Notes for v1.7.X releases can be found [here](http://docs.pivotal.io/jmx-bridge/1-7/rn-ki.html). 
+## <a id='minor1-8'></a>Past Minor Version 1.8.X
+Release Notes for v1.8.X releases can be found [here](http://docs.pivotal.io/jmx-bridge/1-8/rn-ki.html). 
 
