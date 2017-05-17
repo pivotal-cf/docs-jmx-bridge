@@ -48,11 +48,11 @@ You might see the following error if you have Elastic Runtime and JMX Bridge ins
 If you do not see expected metrics from Elastic Runtime in the JMX provider, verify that you installed Elastic Runtime before JMX Bridge. 
 If you installed JMX Bridge first, perform the following steps:
 
-1. SSH into the **opentsdb-firehose-nozzle** VM. For information about how to use the BOSH CLI to SSH into a VM, see [Advanced Troubleshooting with the BOSH CLI](https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html).
+1. SSH into the **jmx-firehose-nozzle** VM. For information about how to use the BOSH CLI to SSH into a VM, see [Advanced Troubleshooting with the BOSH CLI](https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html).
 1. Grant **sudo** access to the machine:
        <pre class="terminal">$ sudo -i</pre>
-1. Restart the `opentsdb-firehose-nozzle` job. 
-       <pre class="terminal">$ monit restart opentsdb-firehose-nozzle</pre>
+1. Restart the `jmx-firehose-nozzle` job.
+       <pre class="terminal">$ monit restart jmx-firehose-nozzle</pre>
 
 ### <a id='bosh-metrics'></a>Missing BOSH Metrics###
 
