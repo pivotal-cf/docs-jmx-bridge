@@ -12,37 +12,6 @@ and how to uninstall the tile if necessary.
 
 The following sections provide help with troubleshooting JMX Bridge for PCF. 
 
-### <a id='dependency'></a>Dependency Error During Install###
-
-You might see the following error if your installed version of Elastic Runtime is not compatible with the version of JMX Bridge that you are attempting to install: 
-`JMX Bridge requires 'cf' version '~> 1.8.0.0' as a dependency.`
-
-<%= image_tag("images/troubleshooting/ert-install-depedency.png") %>
-
-Follow the instructions below that correspond to your installed Elastic Runtime version:
-
-* **Elastic Runtime v1.8.0 to v1.8.16**: 
-   1. Download version v1.8.17 or later of the <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime tile</a> and import it into your Ops Manager **Installation Dashboard**.
-   1. Click the newly added tile to review any configurable options. For more information, see <a href="https://docs.pivotal.io/pivotalcf/installing/index.html">Installing Pivotal Cloud Foundry</a> and choose your IaaS.
-   1. Click **Apply Changes** to install both Elastic Runtime and JMX Bridge.
-* **Elastic Runtime v1.8.17 or later**: Upgrade the JMX Bridge tile to v1.8.9 or later.  
-  <p class="note"><strong>Note</strong>: A known issue exists with older versions of JMX Bridge and the newer versions of Elastic Runtime. JMX Bridge v1.8.2 through v1.8.8 only work with Elastic Runtime v1.8.0 through v1.8.16.</p>
-
-
-### <a id='cyclical_dependency'></a>Cyclic Dependency Error During Install###
-
-You might see the following error if you have Elastic Runtime and JMX Bridge installed.
-
-<%= image_tag("images/troubleshooting/ert-cyclic-depedency.png") %>
-
-* **JMX Bridge v1.8.7 or later; Elastic Runtime v1.8**:
-   1. The Collector component is no longer compatible with JMX Bridge.
-   All metrics that were previously flowing through the Collector are now flowing through the Firehose in Elastic Runtime v1.8.
-   1. Scale down the Collector in `Elastic Runtime > Resource Config` to `0`
-   1. Click **Apply Changes** and continue your JMX Bridge installation.
-
-<p class="note"><strong>Note</strong>: This is only an issue for <strong>Elastic Runtime v1.8</strong>. The Collector does not exist in Elastic Runtime v1.9.</p>
-   
 ### <a id='no-metrics'></a>Missing Metrics from PCF Installation or Firehose###
 
 If you do not see expected metrics from Elastic Runtime in the JMX provider, verify that you installed Elastic Runtime before JMX Bridge. 
@@ -126,11 +95,11 @@ If errors occur when the smoke tests run, you can find the errors in the **Chang
 </tr>
 <tr>
   <th>Cause</th>
-  <td>The OpenTSDB Firehose Nozzle is not receiving metrics from the Firehose.</td>
+  <td>The JMX Firehose Nozzle is not receiving metrics from the Firehose.</td>
 </tr>
 <tr>
   <th>Solution</th>
-  <td>Restart the OpenTSDB Firehose Nozzle VM and check the logs to verify it is connected to the Firehose.  If you see a lot of reconnect attempts in the logs then you likely need to scale up the number of OpenTSDB Firehose Nozzle instances in the <b>Resource Config</b> tab.</td>
+  <td>Restart the JMX Firehose Nozzle VM and check the logs to verify it is connected to the Firehose.  If you see a lot of reconnect attempts in the logs then you likely need to scale up the number of OpenTSDB Firehose Nozzle instances in the <b>Resource Config</b> tab.</td>
  </tr>
  </table>
  
