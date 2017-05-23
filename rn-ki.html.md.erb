@@ -3,29 +3,31 @@ title: Release Notes and Known Issues
 owner: Metrix
 ---
 
-##<a id='v1.9.0'></a>Version 1.9.0
+##<a id='v1.9.0'></a>v1.9.0
 **Release Date: June 15, 2017**
 
 ### Major Features
-* JMX Bridge v1.9 contains two major architecture changes in support of overall security improvements. No breaking changes in the metrics output or format have been introduced in this effort, so consumption of both BOSH and platform metrics should continue to be seamless for end-users upon upgrading from JMX Bridge v1.8 to JMX Bridge v1.9
-    * The former firehose consumer, `opentsdb-firehose-nozzle`, has been updated to a new, gRPC nozzle `jmx-firehose-nozzle`
+* JMX Bridge v1.9 contains two major architecture changes in support of overall security improvements.
+No breaking changes in the metrics output or format have been introduced in this effort, 
+so consumption of both BOSH and platform metrics should continue to be seamless for end-users upon upgrading from JMX Bridge v1.8 to JMX Bridge v1.9.
+    * The former Firehose consumer, `opentsdb-firehose-nozzle`, has been updated to a new, gRPC nozzle `jmx-firehose-nozzle`
     * BOSH metric data now flows from Ops Manager to JMX Bridge via the new `jmx-bosh-plugin`. The related installation field in Ops Manager has been renamed from “Metrics IP” to “JMX Provider IP Address”, and it automatically configures the new plugin. Ops Manager will migrate IP entries in the “Metrics IP” field to the “JMX Provider IP Address” field upon upgrade from PCF v1.10 to PCF v1.11
 * New optional configuration to “Disable or Enable the Nozzle Prefix”; enabled by default
-    * The behavior of the JMX Bridge to prepend `opentsdb.nozzle` onto all non-BOSH firehose-transmitted metrics outputted was an artifact of the prior firehose nozzle. As this was replaced, this artifact was also eliminated. In order to avoid breaking changes to consumers of prior JMX Bridge versions, a new optional feature, enabled by default, was created to continue to prepend this `opentsdb.nozzle` value onto metrics previously outputted with it 
+    * The behavior of the JMX Bridge to prepend `opentsdb.nozzle` onto all non-BOSH Firehose-transmitted metrics outputted was an artifact of the prior Firehose nozzle. As this was replaced, this artifact was also eliminated. In order to avoid breaking changes to consumers of prior JMX Bridge versions, a new optional feature, enabled by default, was created to continue to prepend this `opentsdb.nozzle` value onto metrics previously outputted with it 
     * If you do not require backward compatibility, you can make the metrics more readable by clearing the **Enable Nozzle Prefix** checkbox. This omits the `opentsdb.nozzle` prefix, transmitting the metric values in their pcf-emitted name format. 
     * This backwards-compatibility feature may be deprecated in future versions of JMX Bridge. It is strongly recommended that consumer name mappings be updated when possible, and this feature to prepend `opentsdb.nozzle` then disabled.
 * Support for Firehose transmission of tagged metrics
-    * The firehose is capable of transmitting metrics with tags. While few emitted platform metrics are currently using this capability, for those that are, JMX Bridge v1.9 will pass the tag data along in the same format as seen when using `cf nozzle`
+    * The Firehose is capable of transmitting metrics with tags. While few emitted platform metrics are currently using this capability, for those that are, JMX Bridge v1.9 will pass the tag data along in the same format as seen when using `cf nozzle`
     * An example of a tagged metric is `DopplerServer.listeners.receivedEnvelopes`. When viewing this metric via JMX Bridge or `cf nozzle` the transmitted format is `DopplerServer.listeners.receivedEnvelopes[event_type=ContainerMetric,protocol=grpc]`
 
 ### Release Notes
-* JMX Bridge v1.9.0 is targeted for PCF v1.11.X
+* JMX Bridge v1.9.0 is targeted for PCF v1.11.x
     * JMX Bridge users upgrading to PCF v1.11, must also upgrade to JMX Bridge v1.9 due to a architecture-driven dependency between Ops Manager v1.11 and JMX Bridge v1.9
 * Stemcell for v1.9.0 is v3363
 
 ### Known issues
 * None
 
-## <a id='minor1-8'></a>Past Minor Version 1.8.X
-Release Notes for v1.8.X releases can be found [here](http://docs.pivotal.io/jmx-bridge/1-8/rn-ki.html). 
+## <a id='minor1-8'></a>Past Minor v1.8.x
+Release notes for v1.8.x releases can be found [here](http://docs.pivotal.io/jmx-bridge/1-8/rn-ki.html). 
 
