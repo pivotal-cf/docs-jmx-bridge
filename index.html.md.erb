@@ -7,28 +7,44 @@ owner: PCF Metrics
 The Pivotal Cloud Foundry (PCF) JMX Bridge collects and exposes system data from Cloud Foundry components via a JMX endpoint.
 You can use this system data to monitor your installation and assist in troubleshooting.
 
-The JMX Bridge tool is composed of the following two virtual machines:
+The JMX Bridge tool is composed of the following two VMs:
 
 - The JMX provider
 - A Nozzle for the [Loggregator Firehose](http://docs.pivotal.io/pivotalcf/1-10/loggregator/architecture.html)
-  - For more information on how a Firehose nozzle works, reference the Loggregator [docs](https://docs.pivotal.io/pivotalcf/loggregator/architecture.html#nozzles)
+For more information about how a Firehose nozzle works, see [Nozzles](https://docs.pivotal.io/pivotalcf/loggregator/architecture.html#nozzles).
 
 ## Product Snapshot
 
-<dl>
-<dt>Current PCF JMX Bridge Details</dt>
-<dd><strong>Version</strong>: 1.9.0</dd>
-<dd><strong>Release Date</strong>: 06/15/2017</dd>
-<dd><strong>Compatible Ops Manager Version(s) for Install</strong>: 1.11.x</dd>
-<dd><strong>Compatible Ops Manager Version(s) for Upgrade</strong>: 1.11.x</dd>
-<dd><strong>Compatible Elastic Runtime Version(s)</strong>: 1.11.x</dd>
-<dd><strong>GCP support?</strong> Yes<dd>
-<dd><strong>AWS support?</strong> Yes<dd>
-<dd><strong>vSphere support?</strong> Yes</dd>
-<dd><strong>Azure support?</strong> Yes<dd>
-<dd><strong>OpenStack support?</strong> Yes</dd>
-<dd><strong>IPSec support?</strong> Yes</dd>
-</dl>
+The following table provides version and version-support information about PCF JMX Bridge.
+
+<table class="nice">
+    <th>Element</th>
+    <th>Details</th>
+    <tr>
+        <td>Version</td>
+        <td>v1.9.0</td>
+    </tr>
+    <tr>
+        <td>Release date</td>
+        <td>June 15, 2017</td>
+    </tr>
+    <tr>
+        <td>Compatible Ops Manager version(s)</td>
+        <td>v1.11.x</td>
+    </tr>
+    <tr>
+        <td>Compatible Elastic Runtime version(s)</td>
+        <td>v1.11.x</td>
+    </tr>
+    <tr>
+        <td>IaaS support</td>
+        <td>AWS, Azure, GCP, OpenStack, and vSphere</td>
+    </tr>
+    <tr>
+        <td>IPsec support?</td>
+        <td>Yes</td>
+    </tr>
+</table>
 
 ## <a id='guide'></a>JMX Bridge User Guide ##
 
