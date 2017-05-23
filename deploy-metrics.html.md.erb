@@ -26,15 +26,15 @@ Starting in v1.8.7, the JMX Bridge product enforces this install order dependenc
 
 ## <a id='config-az'></a>Step 2: Assign Availability Zones and Networks
 
-1. Select **Assign AZs and Networks**. This section shows the Availability Zones that you [create](https://docs.pivotal.io/pivotalcf/1-7/customizing/vsphere-config.html#create-az) when configuring Ops Manager Director.
+1. Select **Assign AZs and Networks**. This section shows the availability zones (AZs) that you [create](https://docs.pivotal.io/pivotalcf/1-7/customizing/vsphere-config.html#create-az) when configuring Ops Manager Director.
 
-1. (**vSphere and Amazon Web Services Only**) Select an Availability Zone under **Place singleton jobs in**. Ops Manager runs Metrics jobs with a single instance in this Availability Zone.
+1. (**vSphere and Amazon Web Services Only**) Select an AZ under **Place singleton jobs in**. Ops Manager runs Metrics jobs with a single instance in this AZ.
 
-1. (**vSphere and Amazon Web Services Only**) Select one or more Availability Zones under **Balance other jobs in**. Ops Manager balances instances of Metrics jobs with more than one instance across the Availability Zones that you specify.
+1. (**vSphere and Amazon Web Services Only**) Select one or more AZ under **Balance other jobs in**. Ops Manager balances instances of Metrics jobs with more than one instance across the AZs that you specify.
 
     <%= image_tag("images/deploying/assign-az.png") %>
 
-1. Select a Network from the drop down menu.
+1. Select a Network from the drop-down menu.
     <p class='note'><strong>Note</strong>: JMX Bridge uses the default Assigned Network if you do not select a different network.</p>
 
 1. Click **Save**.
@@ -73,8 +73,8 @@ By default, the Nozzle prefix `opentsdb.nozzle` prepends to Firehose-transmitted
     <%= image_tag("images/deploying/enable-prefix.png") %>
 
 1. If you have enabled or disabled `Enable Nozzle Prefix`, click **Save**.
-Note that enabling or disabling this feature will cause temporary overlap of metrics coming through in both naming
-formats. Metrics with the former metric name format will continue to appear in the MBean tree until the JMX Provider is restarted
+Enabling or disabling this feature causes temporary overlap of metrics coming through in both naming
+formats. Metrics with the former metric name format continue to appear in the MBean tree until the JMX Provider is restarted
 or the MBean store needs additional space to store new metrics.
 
 
