@@ -6,6 +6,19 @@ owner: Metrix
 <p class="note"><strong>Note</strong>: Before v1.7.X, JMX Bridge was known as Ops Metrics. For Ops Metrics release notes and known issues, see <a href="https://docs.pivotal.io/pivotalcf/1-6/pcf-release-notes/p1-v1.6/opsmetrics_rn_1_6.html">Version 1.6.X</a>. </p>
 
 
+##<a id='v1.8.22'></a>Version 1.8.22
+**Release Date: May 25, 2017**
+
+### Release Notes
+* Improvements to OpenTSDB Firehose Nozzle behavior during connectivity issues
+    * When the OpenTSDB Firehose nozzle had a connectivity issue to the maximus vm, the metrics queue could fill to capacity, leaving the nozzle unable to sufficiently recover once the endpoint connection was restored 
+    * Because the product emphasizes transmission of only the latest metric values, in the case of a backup due to an inability to write to maximus, the firehose nozzle will now drop backed-up messages and will write out an error with the number of messages being dropped. This will allow the nozzle to better recover upon recovery of the endpoint connection
+* Example log message output <code>2017/05/22 18:40:29 Could not write to maximus VM.  Dropping 2942 messages.</code>
+* The stemcell for v1.8.22 remains v3363
+
+### Known issues
+* None
+
 ##<a id='v1.8.21'></a>Version 1.8.21
 **Release Date: May 12, 2017**
 
