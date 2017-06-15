@@ -26,7 +26,13 @@ so consumption of both BOSH and platform metrics should continue to be seamless 
 * Stemcell for v1.9.1 is v3363
 
 ### Known issues
-* None
+
+* Installing JMX Bridge v1.9 on Ops Manager v1.11.0 impacts BOSH metrics output  as follows:
+  * `ID` information does not come through JMX Bridge
+  * `IP Property` comes through as a blank string instead of `null` in JMX Bridge
+
+    If you want to consume BOSH metrics from PCF v1.11 using JMX Bridge v1.9, you must use Ops Manager v1.11.1 or later. 
+    
 
 ## <a id='minor1-8'></a>Past Minor v1.8.x
 Release notes for v1.8.x releases can be found [here](http://docs.pivotal.io/jmx-bridge/1-8/rn-ki.html). 
