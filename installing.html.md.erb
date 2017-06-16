@@ -10,7 +10,7 @@ Follow the instructions below to deploy JMX Bridge using the [Pivotal Cloud Foun
 
 ## <a id='import'></a>Step 1: Install the JMX Bridge Tile ##
 
-<p class="note"><strong>Note</strong>: To use the Firehose Nozzle, you <strong>must</strong> install <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> before installing JMX Bridge. 
+<p class="note"><strong>Note</strong>: To use the Firehose Nozzle, you <strong>must</strong> install <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> before JMX Bridge. 
 Starting in v1.8.7, the JMX Bridge product enforces this install order dependency. </p>
 
 1. [Download JMX Bridge](https://network.pivotal.io/products/ops-metrics).
@@ -19,7 +19,7 @@ Starting in v1.8.7, the JMX Bridge product enforces this install order dependenc
 
 1. On the Installation Dashboard, click the **JMX Bridge** tile.
 
-    ![Test](installing/tile.png)
+    ![Test]/tile.png)
 
     The orange bar on the **JMX Bridge** tile indicates that the
     product requires configuration.
@@ -32,7 +32,7 @@ Starting in v1.8.7, the JMX Bridge product enforces this install order dependenc
 
 1. (**vSphere and Amazon Web Services Only**) Select one or more AZ under **Balance other jobs in**. Ops Manager balances instances of Metrics jobs with more than one instance across the AZs that you specify.
 
-    <%= image_tag("images/installing/assign-az.png") %>
+    <%= image_tag("images/assign-az.png") %>
 
 1. Select a Network from the drop-down menu.
     <p class='note'><strong>Note</strong>: JMX Bridge uses the default Assigned Network if you do not select a different network.</p>
@@ -40,7 +40,7 @@ Starting in v1.8.7, the JMX Bridge product enforces this install order dependenc
 1. Click **Save**.
   <p class="note"><strong>Note</strong>: When you save this form, the following verification error displays because
   the PCF security group blocks ICMP. You can ignore this error.</p>
-    <%= image_tag("images/installing/er-network-error.png") %>
+    <%= image_tag("images/er-network-error.png") %>
 
 ## <a id='config-jmx-provider'></a>Step 3: Configure JMX Provider ##
 
@@ -58,7 +58,7 @@ By default, the internal IP address of the JMX Provider VM is set as the host IP
 
 1. Enter the NAT IP as the External IP address in the form `0.0.0.0`
 
-    <%= image_tag("images/installing/enable-nat-support.png") %>
+    <%= image_tag("images/enable-nat-support.png") %>
     
 1. If you have enabled or disabled `NAT Support`, click **Save**.
 
@@ -70,7 +70,7 @@ By default, the Nozzle prefix `opentsdb.nozzle` prepends to Firehose-transmitted
 
 1. If you do not require backward compatibility, you can make the metrics more readable by clearing the **Enable Nozzle Prefix** checkbox. This omits the `opentsdb.nozzle` prefix.
 
-    <%= image_tag("images/installing/enable-prefix.png") %>
+    <%= image_tag("images/enable-prefix.png") %>
 
 1. If you have enabled or disabled `Enable Nozzle Prefix`, click **Save**.
 Enabling or disabling this feature causes temporary overlap of metrics coming through in both naming
@@ -85,7 +85,7 @@ Access to the JMX endpoint is logged to STDOUT by default.
 You can enable this security logging in the JMX Bridge tile configuration by selecting
 this checkbox, or disable it deselecting this checkbox. Security logging is enabled by default.
 
-    <%= image_tag("images/installing/enable-security-logging.png") %>
+    <%= image_tag("images/enable-security-logging.png") %>
     
 1. If you have enabled or disabled `Security Logging`, click **Save**.
 
@@ -100,7 +100,7 @@ Enabling SSL requires JMX clients to use SSL to connect to the JMX Provider.
 If SSL is not enabled, JMX clients can connect to the JMX Provider without SSL
 credentials.
 
-    <%= image_tag("images/installing/enable-jmx-ssl.png") %>
+    <%= image_tag("images/enable-jmx-ssl.png") %>
 
     If you select the **Enable SSL** checkbox, you must also provide an SSL
 	certificate and private key.
@@ -116,7 +116,7 @@ credentials.
 
         For more information, see [Using SSL with a Self-Signed Certificate](./self-signed-ssl.html).
 
-    <%= image_tag("images/installing/external-ssl-cert.png") %>
+    <%= image_tag("images/external-ssl-cert.png") %>
 
 1. After providing an SSL certificate and private key, click **Save**.
 
@@ -126,7 +126,7 @@ credentials.
 By default, Ops Manager runs the post-install errands listed below when you deploy PCF JMX Bridge.
 However, you can prevent a specific post-install errand from running by deselecting its checkbox on the Errands page.</p>
 
-  <%= image_tag("images/installing/errands.png") %>
+  <%= image_tag("images/errands.png") %>
     
 * Select **Smoke tests for JMX Bridge** to cause the JMX Bridge to verify the following: 
   * If the Firehose Nozzle is enabled, that the Nozzle is receiving metrics
@@ -147,7 +147,7 @@ To disable the Firehose Nozzle or stop receiving <a href="https://network.pivota
 
 1. In the Pending Changes view, click **Apply Changes** to install JMX Bridge.
 
-    <%= image_tag("images/installing/pending-changes.png") %>
+    <%= image_tag("images/pending-changes.png") %>
 
 After installation completes, a message appears stating that the changes have been applied.
 
@@ -157,7 +157,7 @@ After installation completes, a message appears stating that the changes have be
 
 1. Click the **JMX Bridge** tile and select the **Status** tab.
 
-    <%= image_tag("images/installing/jmx-provider-ip.png") %>
+    <%= image_tag("images/jmx-provider-ip.png") %>
 
 1. Record the IP address of the **JMX Provider**.
 <p class="note"><strong>Note</strong>: After installation, your JMX client connects to this IP address at port 44444
@@ -168,7 +168,7 @@ using the credentials that you  supplied. Also ensure that TCP port 44445 is ope
 1. Return to the **Installation Dashboard**.
 Click the **Ops Manager Director** tile and select **Director Config**.
 
-    <%= image_tag("images/installing/ops-manager-director-ip.png") %>
+    <%= image_tag("images/ops-manager-director-ip.png") %>
 
 1. In the **JMX Provider IP Address** field, enter the IP address of the JMX
 Provider.
@@ -178,7 +178,7 @@ Click **Save**.
 
 1. In the Pending Changes view, click **Apply Changes**.
 
-    <%= image_tag("images/installing/pending-changes.png") %>
+    <%= image_tag("images/pending-changes.png") %>
     When complete, a message appears stating that the changes have been applied.
 <br>
 1. Click **Return to Product Dashboard**.  JMX Bridge is now installed and configured.
