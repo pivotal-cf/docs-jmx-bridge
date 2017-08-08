@@ -3,6 +3,26 @@ title: Release Notes and Known Issues
 owner: Metrix
 ---
 
+##<a id='v1.9.2'></a>v1.9.2
+**Release Date: August 8, 2017**
+
+### Release Notes
+* Bug fix: `IP Property` comes through as `null` again in JMX Bridge
+* Bug fix: `ID` information comes through again in JMX Bridge
+* Maintenance update of the following product dependencies:
+    * OpenJDK now v1.8.0.141
+    * Golang now v1.8.3
+    * GRPC-ALL now v1.5.0
+    * Guava now v23.0
+    * Bouncy Castle-ALL now v1.57
+    * netty-tcnative-boringssl-static now 2.0.5.Final
+* Stemcell for v1.9.1 remains v3363
+
+### Known issues
+* None
+
+    If you want to consume BOSH metrics from PCF v1.11 using JMX Bridge v1.9, you must use Ops Manager v1.11.3 or later.
+
 ##<a id='v1.9.1'></a>v1.9.1
 **Release Date: June 15, 2017**
 
