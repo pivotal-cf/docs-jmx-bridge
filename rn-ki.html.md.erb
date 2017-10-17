@@ -10,6 +10,7 @@ owner: Metrix
 * Maintenance update of the following product dependencies:
     * OpenJDK now v1.8.0.144
     * Golang now v1.9.1
+* To ensure compatibility with upcoming versions of PCF, JMX Bridge will no longer be statically allocating IPs. However, once installed, the allocated IP will remain the same through future upgrades provided the tile has not been uninstalled. Any tooling that currently relies on obtaining the allocated IP through the Ops Manager's `GET /api/v0/deployed/products/:product_guid/static_ips` endpoint can now use the `GET /api/v0/deployed/products/:product_guid/status` endpoint to retrieve this information.
 * Stemcell for v1.9.3 remains v3363
 
 ### Known issues
