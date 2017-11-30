@@ -237,7 +237,7 @@ The OpenTSDB nozzle, if enabled, continued to assume parsing by integer causing 
 ## <a id='metricsprefix'></a>Metric Name Changes in PCF v1.8 ##
 In JMX Bridge v1.8, [metrics](https://docs.pivotal.io/pivotalcf/1-8/loggregator/all_metrics.html) from a PCF deployment travel through two paths to the JMX Bridge endpoint: the Firehose and the BOSH Director. 
 
-In PCF v1.7 and JMX Bridge v1.7, the collector was still a metrics flow path for Cloud Controller, (Go)Router, and ETCD metrics.
+In PCF v1.7 and JMX Bridge v1.7, the collector was still a metrics flow path for Cloud Controller, Gorouter, and ETCD metrics.
 With PCF v1.8 and JMX Bridge v1.8, the collector was retired and these components now broadcast via the Firehose. 
 
 Some older metrics may have been retired or had their names updated, see [PCF v1.8 metrics](https://docs.pivotal.io/pivotalcf/1-8/loggregator/all_metrics.html) for more information on the individual component metrics. 
