@@ -151,7 +151,13 @@ To disable the Firehose Nozzle or stop receiving <a href="https://network.pivota
 
 After installation completes, a message appears stating that the changes have been applied.
 
-## <a id='get-ip'></a>Step 11: Find the IP Address of the JMX Provider ##
+## <a id='complete'></a>Step 11: Provide a JMX Provider IP Address
+
+If you want to consume BOSH system metrics with JMX Bridge, follow the steps below.
+
+<p class="note"><strong>Note</strong>: In PCF v2.0 and later, BOSH system metrics are available through the Loggregator Firehose. This means JMX Bridge consumes them by default through its Firehose nozzle and you do not need to complete this section. If you do, you may receive duplicate data. For more information, see <a href="../pcf-release-notes/runtime-rn.html#jmx-bridge">BOSH System Metrics Available in Loggregator Firehose</a>.</p>
+
+### <a id='get-ip'></a>Find the IP Address of the JMX Provider ##
 
 1. Click **Return to Product Dashboard**.
 
@@ -163,7 +169,7 @@ After installation completes, a message appears stating that the changes have be
 <p class="note"><strong>Note</strong>: After installation, your JMX client connects to this IP address at port 44444
 using the credentials that you  supplied. Also ensure that TCP port 44445 is open.</p>
 
-## <a id='config-ip'></a>Step 12: Configure the JMX Provider IP Address ##
+### <a id='config-ip'></a>Enter the JMX Provider IP Address ##
 
 1. Return to the **Installation Dashboard**.
 Click the **Ops Manager Director** tile and select **Director Config**.
@@ -174,7 +180,7 @@ Click the **Ops Manager Director** tile and select **Director Config**.
 Provider.
 Click **Save**.
 
-## <a id='complete'></a>Step 13: Complete Installation ##
+## <a id='complete'></a>Step 12: Complete Installation ##
 
 1. In the Pending Changes view, click **Apply Changes**.
 
