@@ -19,9 +19,39 @@ System](../loggregator/architecture.html#other-components).<br><br>
     them, you may receive duplicate data. To prevent this, you can do the
     following:
     * Stop using PCF JMX Bridge to consume BOSH system metrics outside of the
-    Firehose. See [Preventing Duplicated BOSH System Metrics in PCF JMX
-    Bridge](#jmx-bridge) for additional instructions.
+    Firehose. See Known Issues.
     * Uninstall the BOSH HM Forwarder.
+* Because BOSH System metrics now come from the Firehose, their namespaces are different in PCF JMX Bridge. For an explanation of how metric names differ between PCF 2.0 and earlier versions, see the following table. 
+
+    <table>
+    <tr>
+    <th>PCF Version</th>
+    <th>Explanation</th>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><b>1.12 and earlier</b></td>
+    <td>
+    <b>Example Metric</b>:<br>
+    <code>system.healthy</code><br>
+    <b>Description</b>:<br>
+    The BOSH Director delivers the metric name. The metric is nested in the tree structure by deployment name, VM name, VM instance number, and attributes for that VM instance. The sub-node of VM instance number is always named null.<br>
+    <b>Reference Image</b>:<br>
+    <img src="./images/pcf-1.12-p-metrics.png">
+    </td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><b>2.0</b></td>
+    <td>
+    <b>Example Metric</b>:<br>
+    <code>bosh-system-metrics-forwarder.system.healthy</code><br>
+    <b>Description:</b><br>
+    The Firehose delivers the metric name. The tree shows the VM GUID instead of the VM instance number and the sub-node is always empty. This namespacing affects
+    all previous BOSH health metrics.<br>
+    <b>Reference Image</b>:<br>
+    <img src="./images/pcf-2.0-p-metrics.png">
+    </td>
+    </tr>
+    </table>
 
 ### Known issues
 * The new flow of BOSH system metrics cannot be disabled. Therefore, if you are currently using the PCF JMX Bridge tile to consume them, you may receive duplicate data. To prevent this, delete **JMX Provider IP Address** in **Director Config** of your Ops Manager Director tile.<br><br>
