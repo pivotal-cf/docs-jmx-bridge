@@ -24,7 +24,7 @@ The JMX Bridge tool is a JMX extension for Elastic Runtime. Follow the instructi
 
 ## <a id='config-az'></a>Step 2: Assign Availability Zones and Networks
 
-1. Select **Assign AZs and Networks**. This section shows the [Availability Zones that you Create](https://docs.pivotal.io/pivotalcf/1-7/customizing/vsphere-config.html#create-az) when configuring Ops Manager Director.
+1. Select **Assign AZs and Networks**. This section shows the [Availability Zones that you Create](https://docs.pivotal.io/pivotalcf/1-7/customizing/vsphere-config.html#create-az) when configuring the BOSH Director.
 
 1. (**vSphere and Amazon Web Services Only**) Select an Availability Zone under **Place singleton jobs in**. This Availability Zone is where Ops Manager runs Metrics jobs that only have a single instance.
 
@@ -141,7 +141,7 @@ After installation completes, a message appears stating that the changes have be
 ## <a id='config-ip'></a>Step 11: Configure the Metrics IP Address ##
 
 1. Return to the **Installation Dashboard**.
-Click the **Ops Manager Director** tile and select **Director Config**.
+Click the **BOSH Director** tile and select **Director Config**.
 
     <%= image_tag("images/ops-metrics-director-ip.png") %>
 
