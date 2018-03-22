@@ -11,7 +11,11 @@ owner: Metrix
 * Network connections will time out and reconnect if no new metrics are received for 30 seconds.
 
 ### Known issues
-* None
+* The new flow of BOSH system metrics (see release notes for v1.9.5 for more details) cannot be disabled. Therefore, if you are currently using the PCF JMX Bridge tile to consume them, you may receive duplicate data. To prevent this, delete **JMX Provider IP Address** in **Director Config** of your Ops Manager Director tile.<br><br>
+
+    
+    Deleting the IP address means that BOSH system metrics will no longer be sent to JMX Bridge using the direct connection from the BOSH Director to the JMX Provider. As these BOSH system metrics are now available in JMX Bridge by default through its Firehose nozzle, breaking the prior direct connection by deleting the JMX Provider IP address prevents the duplication of BOSH metrics for JMX Bridge consumers.
+
 
 
 ##<a id='v1.9.5'></a>v1.9.5
