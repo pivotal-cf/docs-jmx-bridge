@@ -7,7 +7,8 @@ owner: PCF Metrics
 
 The JMX Bridge tool is a JMX extension for Elastic Runtime. Follow the instructions below to deploy JMX Bridge using the [Pivotal Cloud Foundry](https://network.pivotal.io/products/pcf-metrics) (PCF) Operations Manager.
 
-## <a id='import'></a>Step 1: Install the JMX Bridge Tile ##
+
+## <a id='import'></a> Step 1: Install the JMX Bridge Tile
 
 <p class="note"><strong>Note</strong>: To use the Firehose Nozzle, you <strong>must</strong> install <a href="https://network.pivotal.io/products/elastic-runtime">Elastic Runtime</a> <strong>before</strong> installing JMX Bridge. JMX Bridge requires the components to be installed in this order.</p>
 
@@ -16,13 +17,11 @@ The JMX Bridge tool is a JMX extension for Elastic Runtime. Follow the instructi
 1. Import JMX Bridge into Ops Manager by following the instructions for [Adding and Importing Products](https://docs.pivotal.io/pivotalcf/1-7/customizing/add-delete.html#add-import).
 
 1. On the Installation Dashboard, click the **JMX Bridge** tile.
-
     <%= image_tag("images/metrics-tile.png") %>
+    The orange bar on the **JMX Bridge** tile indicates that the product requires configuration.
 
-    The orange bar on the **JMX Bridge** tile indicates that the
-    product requires configuration.
 
-## <a id='config-az'></a>Step 2: Assign Availability Zones and Networks
+## <a id='config-az'></a> Step 2: Assign Availability Zones and Networks
 
 1. Select **Assign AZs and Networks**. This section shows the [Availability Zones that you Create](https://docs.pivotal.io/pivotalcf/1-7/customizing/vsphere-config.html#create-az) when configuring the BOSH Director.
 
@@ -33,13 +32,14 @@ The JMX Bridge tool is a JMX extension for Elastic Runtime. Follow the instructi
     <%= image_tag("images/assign-az.png") %>
 
 1. Select a Network from the drop down menu.
-    <p class='note'><strong>Note</strong>: JMX Bridge uses the default Assigned Network if you do not select a different network.</p>
+    <p class='note'><strong>Note:</strong> JMX Bridge uses the default Assigned Network if you do not select a different network.</p>
 
 1. Click **Save**.
-  <p class="note"><strong>Note</strong>: When you save this form, a verification error displays. You can ignore this error. It only appears because the PCF security group blocks ICMP.</p>
+  <p class="note"><strong>Note:</strong> When you save this form, a verification error displays. You can ignore this error. It only appears because the PCF security group blocks ICMP.</p>
     <%= image_tag("images/er-network-error.png") %>
 
-## <a id='config-jmx-provider'></a>Step 3: Configure JMX Provider ##
+
+## <a id='config-jmx-provider'></a> Step 3: Configure JMX Provider
 
 1. Select **JMX Provider**.
 
@@ -47,32 +47,29 @@ The JMX Bridge tool is a JMX extension for Elastic Runtime. Follow the instructi
 
 1. Record these credentials. You use these to connect JMX clients to the JMX Provider.
 
-## <a id='config-nat'></a>(Optional) Step 4: Enable NAT Support ##
 
-1. Select the **Enable** radio button.
-NAT support is disabled by default. Enabling NAT support allows you to set the NAT IP as the host IP. By default, the internal IP address of the JMX Provider VM is set as the host IP.
+## <a id='config-nat'></a> (Optional) Step 4: Enable NAT Support
 
+1. Select the **Enable** radio button. NAT support is disabled by default. Enabling NAT support allows you to set the NAT IP as the host IP. By default, the internal IP address of the JMX Provider VM is set as the host IP.
+ 
 1. Enter the NAT IP as the External IP address in the form `0.0.0.0`
 
     <%= image_tag("images/jmxbridge-enable-nat-support.png") %>
     
 1. If you have enabled or disabled `NAT Support`, click **Save**.
 
-<p class="note"><strong>Note</strong>: To connect to the JMX Provider after install, you <strong>must</strong> use the specified
-IP address. The IP address displayed in the <code>Status</code> tab always reflects the internal IP address of the JMX Provider VM, not the external IP address.</p>
+<p class="note"><strong>Note:</strong> To connect to the JMX Provider after install, you <strong>must</strong> use the specified IP address. The IP address displayed in the <code>Status</code> tab always reflects the internal IP address of the JMX Provider VM, not the external IP address.</p>
 
 
-## <a id='config-security-logging'></a>(Optional) Step 5: Enable Security Logging ##
+## <a id='config-security-logging'></a> (Optional) Step 5: Enable Security Logging
 
-1. Select the **Enable Security Logging** checkbox.
-Access to the JMX endpoint is logged to STDOUT by default. 
-You can enable security logging in the JMX Bridge tile configuration by selecting this checkbox, or disable it deselecting this checkbox. Security logging is enabled by default.
+1. Select the **Enable Security Logging** checkbox. Access to the JMX endpoint is logged to stdout by default. You can enable security logging in the JMX Bridge tile configuration by selecting this checkbox, or disable it by deselecting this checkbox. Security logging is enabled by default.
 
     <%= image_tag("images/jmxbridge-enable-security-logging.png") %>
     
 1. If you made changes to Security Logging, click **Save**.
 
-<p class="note"><strong>Note</strong>: Related log output is made available by initiating a JMX Provider logs download from the JMX Bridge tile configuration status tab, then  fetching the download from the logs tab.</p>
+<p class="note"><strong>Note:</strong> Related log output is made available by initiating a JMX Provider logs download from the JMX Bridge tile configuration status tab, then  fetching the download from the logs tab.</p>
 
 ## <a id='config-ssl'></a>(Optional) Step 6: Configure SSL ##
 
