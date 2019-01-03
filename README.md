@@ -2,7 +2,10 @@
 
 ### Branch Management
 
-#### Live Branches
+#### No Live Branches
+
+The most recent version of this was v1.9. However, this product is now obsolete and has been removed
+from the docs.pivotal.io and a redirect added.
 
 **1.9**: This branch hosts the live docs for PCF JMX Bridge v1.9, published to http://docs.pivotal.io/jmx-bridge/1-9/.
 
